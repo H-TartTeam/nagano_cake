@@ -3,5 +3,7 @@ class Public::ItemsController < ApplicationController
   end
 
   def index
+  @Item = Item.find(params[:id])
+  @cart_item = CartItem.new
   end
 end

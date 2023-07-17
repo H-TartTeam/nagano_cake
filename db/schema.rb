@@ -1,3 +1,4 @@
+
 ActiveRecord::Schema.define(version: 2023_07_17_064750) do
 
   create_table "admins", force: :cascade do |t|
@@ -13,7 +14,7 @@ ActiveRecord::Schema.define(version: 2023_07_17_064750) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "quantity", default: 1, null: false
+    t.integer "quantity", null: false
     t.integer "customer_id", null: false
     t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
