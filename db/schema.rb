@@ -1,3 +1,4 @@
+
 ActiveRecord::Schema.define(version: 2023_07_17_064750) do
 
   create_table "admins", force: :cascade do |t|
