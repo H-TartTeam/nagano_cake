@@ -10,33 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_07_17_025047) do
+ActiveRecord::Schema.define(version: 2023_07_17_052841) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", default: 1, null: false
     t.integer "customer_id", null: false
-    t.integer "product_id", null: false
+    t.integer "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["customer_id"], name: "index_cart_items_on_customer_id"
-    t.index ["product_id"], name: "index_cart_items_on_product_id"
+    t.index ["item_id"], name: "index_cart_items_on_item_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "customer_id", null: false
-    t.integer "postage", null: false
-    t.integer "billing_amount", null: false
-    t.integer "payment_method", default: 0, null: false
-    t.string "shipping_name", null: false
-    t.string "shipping_post_code", null: false
-    t.string "shipping_address", null: false
-    t.integer "status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["customer_id"], name: "index_orders_on_customer_id"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -44,11 +30,39 @@ ActiveRecord::Schema.define(version: 2023_07_17_025047) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_customers_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "item_id", null: false
+    t.integer "order_id", null: false
+    t.integer "price", null: false
+    t.integer "quantity", null: false
+    t.integer "make_status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["item_id"], name: "index_order_items_on_item_id"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "customer_id", null: false
+    t.integer "postage", null: false
+    t.integer "total_amount", null: false
+    t.integer "payment_method", default: 0, null: false
+    t.string "name", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.integer "status", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["customer_id"], name: "index_orders_on_customer_id"
   end
 
   add_foreign_key "cart_items", "customers"
-  add_foreign_key "cart_items", "products"
+  add_foreign_key "cart_items", "items"
+  add_foreign_key "order_items", "items"
+  add_foreign_key "order_items", "orders"
   add_foreign_key "orders", "customers"
 end
