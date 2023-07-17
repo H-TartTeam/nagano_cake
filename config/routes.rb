@@ -1,16 +1,26 @@
 Rails.application.routes.draw do
 
-  devise_for :admins
-  devise_for :costomers
+  　devise_for :admins
+  　devise_for :costomers
   
-  namespace :public do
+ 　 namespace :public do
     get "/" => "homes#top"
     get 'homes/about'
-  end
+ 　 end
   
-  namespace :public do
+　 　　namespace :public do
     get 'items/show'
     get 'items/index'
-  end
- 
+  　end
+  
+ 　 namespace :public do
+    get 'orders/show'
+    get 'orders/index'
+    get 'orders/confirm'
+    get 'orders/complete'
+ 　 end
+  
+ 　 namespace :public do
+    get 'cart_items/index'
+  　end
 end
