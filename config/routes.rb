@@ -15,5 +15,5 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit]
   end
-
 end
+
