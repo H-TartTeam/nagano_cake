@@ -1,26 +1,19 @@
 Rails.application.routes.draw do
-  
-   devise_for :admins
-   devise_for :customers
 
-   namespace :public do
-    get "/" => "homes#top"
-    get 'homes/about'
-   end
+  devise_for :admins
+  devise_for :customers
 
-    namespace :public do
-    get 'items/show'
-    get 'items/index'
-   end
 
-   namespace :public do
-    get 'orders/show'
-    get 'orders/index'
-    get 'orders/confirm'
-    get 'orders/complete'
-   end
 
-   namespace :public do
-    get 'cart_items/index'
-    end
+  scope module: :public do
+  root "homes#top"
+  resources :orders, only: [:index, :show, :onfirm, :complete]
+  get "/about" => "homes#about"
+  resources :items, only: [:index, :show,]
+  get 'orders/show'
+  get 'orders/index'
+  get 'orders/confirm'
+  get 'orders/complete'
+  get 'cart_items/index'
+ end
 end
