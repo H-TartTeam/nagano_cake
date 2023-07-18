@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   
-   devise_for :admins
-   devise_for :customers
+  devise_for :admins
+  devise_for :customers
 
   scope module: :public do
     root "homes#top"
@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :onfirm, :complete]
     get 'cart_items/index'
   end
+
   namespace :admin do
     resources :items
   end
 end
+
