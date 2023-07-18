@@ -1,0 +1,27 @@
+<h4>会員情報編集</h4>
+
+ <%= form_with model: @customer, url: customers_information_path, method: :patch do |f| %>
+
+<div>氏名</div>
+<%= f.text_field :last_name %>
+<%= f.text_field :first_name %>
+
+<div>フリガナ</div>
+<%= f.text_field :last_name %>
+<%= f.text_field :last_name %>
+
+<div>郵便番号</div>
+<%= f.text_field :postcode %>
+
+<div>住所</div>
+<%= f.text_field :address %>
+
+<div>電話番号</div>
+<%= f.text_field :phone_number %>
+
+<div>メールアドレス</div>
+<%= f.text_field :email %>
+
+<%= link_to "編集内容を保存", customer_mypage_path(@customer_id), class: "btn btn-sm btn-success" %>
+<%= link_to "退会する", _path(@), class: "btn btn-sm btn-danger" %>
+<!--保存するとマイページへ遷移・退会確認ページへ遷移-->
