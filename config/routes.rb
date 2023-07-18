@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     root "homes#top"
     get "/about" => "homes#about"
     resources :items, only: [:index, :show,]
-    resources :orders, only: [:index, :show, :onfirm, :complete]
+    resources :orders, only: [:index, :show, :confirm, :complete]
     get 'cart_items/index'
   end
 end
