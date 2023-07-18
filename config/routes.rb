@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :admins
   devise_for :customers
 
@@ -10,4 +10,10 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :onfirm, :complete]
     get 'cart_items/index'
   end
+
+  namespace :admin do
+    resources :customers, only: [:index, :show, :edit]
+    resources :genres, only: [:index, :edit]
+  end
+
 end
