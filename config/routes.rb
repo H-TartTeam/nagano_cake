@@ -7,12 +7,13 @@ Rails.application.routes.draw do
     root "homes#top"
     get "/about" => "homes#about"
     resources :items, only: [:index, :show,]
-    resources :orders, only: [:index, :show, :onfirm, :complete]
+    resources :orders, only: [:index, :show, :confirm, :complete]
     get 'cart_items/index'
   end
 
   namespace :admin do
-    resources :items
+    resources :customers, only: [:index, :show, :edit]
+    resources :genres, only: [:index, :edit]
   end
 end
 
