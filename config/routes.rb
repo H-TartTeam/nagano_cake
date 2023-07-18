@@ -10,4 +10,9 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :onfirm, :complete]
     get 'cart_items/index'
   end
+
+  namespace :admin do
+    resources :items
+  end
 end
+
