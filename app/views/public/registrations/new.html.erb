@@ -1,7 +1,7 @@
 <h2>新規会員登録</h2>
 
 <%= form_with model: @customer, url: new_customer_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+  <%#=render "public/shared/error_messages", resource: resource %>
   <div class="field">
     <%= f.label :last_name, "姓" %><br />
     <%= f.text_field :last_name %>
@@ -43,7 +43,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "新規登録" %>
   </div>
 <% end %>
 
