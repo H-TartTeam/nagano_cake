@@ -43,5 +43,4 @@ class Admin::ItemsController < ApplicationController
     def item_params
       params.require(:item).item(:image, :name, :introduction, :genre, :price, :is_available)
     end
-
 end

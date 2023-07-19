@@ -4,7 +4,6 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
   belongs_to :genre
   has_many :orders, through: :order_items
-
   
   attachment :image
   
@@ -16,3 +15,5 @@ class Item < ApplicationRecord
     validates :image
   end
 end
+end
+
