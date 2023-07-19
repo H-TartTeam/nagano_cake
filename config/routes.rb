@@ -15,11 +15,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show,]
     resources :customers, only: [:show, :edit, :update, :confirm_withdraw, :withdraw]
     resources :orders, only: [:index, :show, :confirm, :complete]
-    resources :cart_items, only: [:index, :create, :destroy] do
-      member do
-        #カート内個数を変更する際に使用するパス
-        patch 'increase'
-        patch 'decrease'
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      #全体のデータに対するアクション
+      collection do
+        delete 'clear'
       end
     end
   end
