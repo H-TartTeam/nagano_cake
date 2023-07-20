@@ -13,18 +13,18 @@
       </tr>
     </tbody>
     <thead>
-      <%= @customers.each do |customer| %>
+      <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
-          <td><%= customer.name %></td>
+          <td><%= customer.full_name %></td>
           <td><%= customer.email %></td>
-          <td><%= customer.is_deleted ? '有効' : '退会' %></td>
+          <td><%= customer.is_deleted ? '退会' : '有効' %></td>
         </tr>
       <% end %>
     </thead>
   </tabel>
 
   <!--ページネーション-->
-  <%= paginate @posts %>
+  <!--%= paginate @posts %-->
 
 </main>
