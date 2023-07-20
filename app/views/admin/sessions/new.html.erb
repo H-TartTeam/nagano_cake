@@ -6,6 +6,7 @@
         <h4>管理者ログイン</h4>
 
         <%= form_with model: @admin, url: admin_session_path do |f| %>
+        <!--<%#= form_for(resource, as: resource_name, url: admin_path(resource_name)) do |f| %>を上記に変更した-->
           <div class="form-group">
           <%= f.label :email, "メールアドレス" %>
           <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
