@@ -1,7 +1,8 @@
 class Admin::CustomersController < ApplicationController
   module Admin
     def index
-      @customers = Customers.all
+      #.page(params[:page])ページネーション
+      @customers = Customers.all.page(params[:page])
     end
 
     def show
