@@ -18,7 +18,7 @@
           <td><%= customer.id %></td>
           <td><%= customer.name %></td>
           <td><%= customer.email %></td>
-          <td></td>
+          <td><%= customer.is_deleted ? '有効' : '退会' %></td>
         </tr>
       <% end %>
     </thead>
