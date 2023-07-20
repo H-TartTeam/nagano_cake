@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2023_07_17_064750) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "last_name", null: false
-    t.string "first_name", null: false
+    t.string "last_name", null: false
     t.string "last_kana_name", null: false
     t.string "first_kana_name", null: false
     t.string "address", null: false

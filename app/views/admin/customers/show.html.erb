@@ -1,2 +1,38 @@
-<h1>Admin::Customers#show</h1>
-<p>Find me in app/views/admin/customers/show.html.erb</p>
+<main>
+  <h4>会員詳細</h4>
+  
+  <table>
+    <tbody>
+      <tr>
+        <th>会員ID</th>
+        <th></th>
+      </tr>
+      <tr>
+        <th>氏名</th>
+        <th><%= @customer.last_name %></th>
+        <th><%= @customer.first_name %></th>
+      </tr>
+      <tr>
+        <th>フリガナ</th>
+        <th><%= @customer.last_kana_name %></th>
+        <th><%= @customer.first_kana_name %></th>
+      </tr>
+      <tr>
+        <th>郵便番号</th>
+        <th><%= @customer.postcode %></th>
+      </tr>
+      <tr>
+        <th>住所</th>
+        <th><%= @customer.address %></th>
+      </tr>
+      <tr>
+        <th>電話番号</th>
+        <th><%= @customer.phone_number %></th>
+      </tr>
+      <tr>
+        <th>メールアドレス</th>
+        <th><%= @customer.email %></th>
+      </tr>
+    </tbody>
+  </tabel>
+</main>
