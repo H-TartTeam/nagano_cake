@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get "/about" => "homes#about"
     resources :items, only: [:index, :show,]
     resources :customers, only: [:show, :edit, :update, :confirm_withdraw, :withdraw]
-    resources :orders, only: [:index, :show, :confirm, :complete]
+    resources :orders, only: [:new, :index, :show, :confirm, :complete]
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       #全体のデータに対するアクション
       collection do
