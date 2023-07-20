@@ -2,3 +2,8 @@
 <h2><%@item.name%></h2>
 <p><%introduction%></p>
 <p><%price%></p>
+<% if @product.image.attached? %>
+  <%= image_tag @product.image %>
+<% else %>
+  <p>No Image</p>
+<% end %>
