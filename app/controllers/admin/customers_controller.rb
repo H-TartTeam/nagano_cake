@@ -1,11 +1,13 @@
 class Admin::CustomersController < ApplicationController
-  def index
-    @customers = Customers.all
-  end
+  module Admin
+    def index
+      @customers = Customers.all
+    end
 
-  def show
-  end
+    def show
+    end
 
-  def edit
+    def edit
+    end
   end
 end
