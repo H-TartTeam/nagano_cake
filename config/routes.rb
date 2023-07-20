@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 devise_for :customers,skip: [:passwords], controllers: {
+
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
@@ -22,9 +23,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
         #patch 'customer'
       #end
   end
-
+  
   namespace :admin do
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :show, :edit, :create, :update, :new]
   end
 end
