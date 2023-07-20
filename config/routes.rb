@@ -9,22 +9,23 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do
+    get "/" => "homes#top"
+    resources :customers, only: [:index, :show, :edit]
+    resources :genres, only: [:index, :edit, :create, :update]
+    resources :items, only: [:index, :show, :edit, :create, :update, :new]
+  end
+
   scope module: :public do
     root "homes#top"
     get "/about" => "homes#about"
     resources :items, only: [:index, :show,]
     resources :customers, only: [:show, :edit, :update, :confirm_withdraw, :withdraw]
     resources :orders, only: [:new, :index, :show, :confirm, :complete]
-    resources :cart_items, only: [:index, :update, :create, :destroy] do
+    resources :cart_items, only: [:index, :update, :create, :destroy]
       #全体のデータに対するアクション
       collection do
         delete 'clear'
       end
     end
-  end
-
-  namespace :admin do
-    resources :customers, only: [:index, :show, :edit]
-    resources :genres, only: [:index, :edit, :create, :update]
-  end
 end

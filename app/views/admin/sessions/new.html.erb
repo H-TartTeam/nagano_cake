@@ -1,8 +1,17 @@
-<h2>管理者ログイン</h2>
+<div class="container">
+  <div class="row my-3">
+    <div class="col-sm-8 px-sm-0 offset-sm-1">
+      <h2>管理者ログイン</h2>
+    </div>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="row">
+      <div class="col-sm-3 px-sm-0 offset-sm-1">
+        <%= f.label, "メールアドレス" %>
+      </div>
   <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
+
     <%= f.email_field :email, autofocus: true %>
   </div>
 
@@ -24,3 +33,4 @@
 <% end %>
 
 <%= render "admin/shared/links" %> <!--adminに修正-->
+
