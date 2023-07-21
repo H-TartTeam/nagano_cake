@@ -24,7 +24,12 @@ Rails.application.routes.draw do
     patch '/customers/edit' => 'customers#update'
     resources :items, only: [:index, :show]
     resources :customers, only: [:new, :create, :show, :edit, :update, :confirm_withdraw, :withdraw]
-    resources :orders, only: [:new, :index, :show, :confirm, :complete]
+    resources :orders, only: [:new, :index, :show] do
+      member do
+        get :complete
+      end
+    end
+    get 'orders/confirm' => 'orders#confirm', as: 'confirm_order'
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
         delete 'clear'
