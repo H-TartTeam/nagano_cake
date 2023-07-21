@@ -1,11 +1,11 @@
 <main>
-  <h4>会員詳細</h4>
-  
+ <h4>会員詳細</h4>
+
   <table>
     <tbody>
       <tr>
         <th>会員ID</th>
-        <th></th>
+        <th><%= @customer.id %></th>
       </tr>
       <tr>
         <th>氏名</th>
@@ -38,8 +38,10 @@
         <th><%= @customer.is_deleted ? '退会' : '有効' %></th>
       </tr>
       <tr>
-        
+        <td><%= link_to "編集する", edit_admin_customer_path(@customer.id) %></td>
+        <td><%= link_to "注文履歴一覧に戻る", admin_items_path %></td>
       </tr>
     </tbody>
-  </tabel>
+  </table>
+
 </main>
