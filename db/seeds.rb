@@ -1,5 +1,4 @@
 Admin.create!(
-   email: 'tarte@team',
-   password: '202306'
+  email: 'tarte@team',
+  password: '202306'
 )
-
