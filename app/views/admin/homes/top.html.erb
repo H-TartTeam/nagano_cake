@@ -14,12 +14,12 @@
     </tr>
   </thead>
   <tbody>
-    <%= @customer_orders.each do |customer_order| %>
+    <%= @order.each do |order| %>
       <tr>
-        <td><%= customer_order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
-        <td><%= customer_order.customer %></td>
-        <td><%= customer_order.quantity %></td>
-        <td><%= customer_order.status %></td>
+        <td><%= order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></td>
+        <td><%= order.customer %></td>
+        <td><%= order.quantity %></td>
+        <td><%= order.status %></td>
       </tr>
     <% end %>
   </tbody>

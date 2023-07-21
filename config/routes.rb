@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     resource :customers, only: [:new, :create, :edit, :update, :confirm_withdraw, :withdraw]
     get 'customers/mypage' => 'customers#show'
     get 'customers/infomation/edit' => 'customers#edit'
+    patch '/customers/edit' => 'customers#update'
     resources :orders, only: [:index, :show, :confirm, :complete]
     #resources :cart_items, only: [:index, :create, :destroy] do
       #member do
