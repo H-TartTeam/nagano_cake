@@ -3,7 +3,8 @@
     <div class="col">
       <h4 class="my-5">会員情報編集</h4>
       <table class="table table-borderless">
-        <%= form_with model: @customer, url: edit_customers_path do |f| %>
+
+        <%= form_with model: @customer, url: customers_infomation_path do |f| %>
          <tr>
           <td>氏名</td>
           <td><%= f.text_field :last_name %></td>
@@ -12,8 +13,8 @@
 
         <tr>
           <td>フリガナ</td>
-          <td><%= f.text_field :last_name_kana %></td>
-          <td><%= f.text_field :first_name_kana %></td>
+          <td><%= f.text_field :last_kana_name %></td>
+          <td><%= f.text_field :first_kana_name %></td>
         </tr>
 
         <tr>
