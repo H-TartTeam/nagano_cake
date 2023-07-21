@@ -1,2 +1,58 @@
-<h1>Public::CartItems#index</h1>
-<p>Find me in app/views/public/cart_items/index.html.erb</p>
+<main>
+  <div>
+    <!--カートが空かどうか判断するIF-->
+    <% if @cart_items.blank? %>
+      <h3>カート内に商品はございません</h3>
+    </div>
+  <!--カートに商品が入っていた場合-->
+  <% else %>
+    <div>
+      <h4>ショッピングカート</h4>
+      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete %>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--カート内商品を一つずつ取り出す-->
+        <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td><%= cart_item.item.name %></td>
+            <td><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
+            <td>
+              <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
+                <%= f.hidden_field :customer_id, value: current_customer.id %>
+                <%= f.hidden_field :item_id, value: cart_item.item.id %>
+                <!--数量変更-->
+                <%= f.select :quantity, (1..50).to_a, {} %>
+                <%= f.submit "変更" %>
+              <% end %>
+            </td>
+            <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
+            <td><%= link_to '削除', cart_item_path(cart_item), method: :delete, data: { confirm: "本当に削除しますか？" } %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <div><%= link_to '買い物を続ける', root_path %></div>
+    <table>
+      <tbody>
+        <tr>
+          <th>合計金額</th>
+          <td><%= @total_amount.to_s(:delimited) %>円</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div><%= link_to '情報入力へ進む', new_order_path %></div>
+  <% end %>
+</main>

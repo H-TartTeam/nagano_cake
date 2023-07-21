@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
 
-devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers,skip: [:passwords], controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
 
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
-
- namespace :admin do
+  namespace :admin do
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit]
     resources :genres, only: [:index, :edit, :create, :update]
@@ -18,11 +17,15 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   end
 
   scope module: :public do
-    root "homes#top"
+   root "homes#top"
     get "/about" => "homes#about"
-    resources :items, only: [:index, :show,]
-    resource :customers, only: [:new, :create, :show, :edit, :update, :confirm_withdraw, :withdraw]
-    resources :orders, only: [:index, :show, :confirm, :complete]
-    resources :cart_items, only: [:index, :create, :destroy]
+    resources :items, only: [:index, :show]
+    resources :customers, only: [:show, :edit, :update, :confirm_withdraw, :withdraw]
+    resources :orders, only: [:new, :index, :show, :confirm, :complete]
+    resources :cart_items, only: [:index, :update, :create, :destroy] do
+      collection do
+        delete 'clear'
+      end
+    end
   end
 end
