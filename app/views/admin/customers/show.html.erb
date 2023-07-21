@@ -33,6 +33,13 @@
         <th>メールアドレス</th>
         <th><%= @customer.email %></th>
       </tr>
+      <tr>
+        <th>会員ステータス</th>
+        <th><%= @customer.is_deleted ? '退会' : '有効' %></th>
+      </tr>
+      <tr>
+        
+      </tr>
     </tbody>
   </tabel>
 </main>
