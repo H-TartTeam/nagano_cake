@@ -1,9 +1,42 @@
+<div class="container">
+  <div class="row">
+    <!--%= render 'public/homes/list_search', genres: @genres %>-->
+  <!--% end %>-->
+ </div>
+</div>
+  </div>
+  <div class="row">
+    <div class="col-sm-20 px-sm-0 mx-auto mb-5">
+      
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, style: "max-width: 700px;" %>
+      <% else %>
+          No image available
+      <% end %>
+       <h2><%= @item.name %>♡</h2>
+      <table>
+          <tr>
+          <td>商品説明</td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格</td>
+          <td>¥<%= (@item.price * 1.1).round %></td>
+        </tr>
+        
+      </table>
+      
+      <div class="form-action">
+        
+        <%= link_to "Buck to index", items_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+</div>
 
-<h2><%@item.name%></h2>
-<p><%introduction%></p>
-<p><%price%></p>
-<% if @product.image.attached? %>
-  <%= image_tag @product.image %>
-<% else %>
-  <p>No Image</p>
-<% end %>
+
+
