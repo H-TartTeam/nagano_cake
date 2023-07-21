@@ -28,14 +28,14 @@
           <td>¥<%= (@item.price * 1.1).round %></td>
         </tr>
         <tr>
-          <% if @item.is_active == TRUE %>
-            <%= form_with(model: @cart_item,url: cart_items_path, method: :post,local: true)do |f| %>
+          <% if @item.is_available == true %>
+              <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
               <%= f.label :quantity, "個数選択" %>
-              <%= f.select :quantity, [1,2,3,4,5,6,7,8,9,10] %>
-              <%= f.hidden_field :item_id, :value => @item.id %>
+              <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+              <%= f.hidden_field :item_id, value: @item.id %>
               <%= f.submit "カートに入れる" %>
             <% end %>
-          <% end %>
+        <% end %>
         </tr>
 
       </table>
