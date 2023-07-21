@@ -1,9 +1,5 @@
 class Public::ItemsController < ApplicationController
-<<<<<<< HEAD
   
-=======
-
->>>>>>> origin/develop
   def show
     @item = Item.find(params[:id])
     @cart_item = CartItem.new
