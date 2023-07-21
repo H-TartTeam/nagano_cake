@@ -1,26 +1,28 @@
 <main>
   <h4>注文情報入力</h4>
 
-  <%= form_with url: "/orders", method: :post do |f| %>
-    <!-- 既存の住所選択用ラジオボタン -->
-    <%= f.label :address_option, "登録済住所から選択" %>
-    <%= f.radio_button :address_option, "registered" %>
+  <%= form_with model: @order, url: "/orders", method: :post do |form| %>
+    <!-- 支払い方法のラジオボタン -->
+    <h4>支払い方法</h4>
+    <%= form.label :payment_method, "銀行振り込み" %>
+    <%= form.radio_button :payment_method, :bank_transfer %>
+    <br>
+    <%= form.label :payment_method, "クレジットカード払い" %>
+    <%= form.radio_button :payment_method, :credit_card %>
     <br>
 
-    <!-- 登録済住所を表示し、ラジオボタンで選択できるようにするセクション -->
-    <% current_customer.shopping_addresses.each do |address| %>
-      <%= form.label :selected_address, address.full_address %>
-      <%= form.radio_button :selected_address_id, address.id %>
-      <br>
-    <% end %>
-
+    <h4>お届け先</h4>
+    <!-- 既存の住所選択用ラジオボタン -->
+    <%= form.label :address_option, "登録済住所から選択" %>
+    <%= form.radio_button :address_option, "registered" %>
+    <br>
     <!-- 新しい住所入力用フォーム -->
     <%= form.label :address_option, "新しいお届け先" %>
     <%= form.radio_button :address_option, "new" %>
     <br>
 
     <!-- 新しい住所入力用フォームが表示される条件を指定 -->
-    <%= form.fields_for :new_address, @new_address do |new_address_form| %>
+    <%= form.fields_for :new_address, @shipping_address do |new_address_form| %>
       <%= new_address_form.label :postcode, "郵便番号" %>
       <%= new_address_form.text_field :postcode %>
       <br>
@@ -33,7 +35,5 @@
       <%= new_address_form.text_field :name %>
       <br>
     <% end %>
-
-    <!-- その他のフォーム内容を追加 -->
   <% end %>
 </main>
