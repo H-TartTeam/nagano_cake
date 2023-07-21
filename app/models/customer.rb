@@ -10,4 +10,14 @@ class Customer < ApplicationRecord
     "#{last_name} #{first_name}"
   end
 
+  #制限をかけるためにはバリデーションが必要
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_kana_name, presence: true
+  validates :first_kana_name, presence: true
+  validates :email, presence: true
+  validates :address, presence: true
+  validates :phone_number, presence: true
+  validates :is_deleted, inclusion: { in: [true, false] }
+
 end
