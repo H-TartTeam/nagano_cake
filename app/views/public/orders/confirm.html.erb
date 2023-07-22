@@ -1,2 +1,69 @@
-<h1>Public::Orders　index#confirm</h1>
-<p>Find me in app/views/public/orders　index/confirm.html.erb</p>
+ <main>
+<h4>注文情報確認</h4>
+
+            <th scope="col" style="width: 40%;">商品名</th>
+            <th scope="col" style="width: 20%;">単価（税込）</th>
+            <th scope="col" style="width: 20%;">数量</th>
+            <th scope="col" style="width: 20%;">小計</th>
+           </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr id="cart_item">
+            <td class="align-middle  text-center"><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
+            <td class="align-middle  text-center"><%= cart_item.quantity %></td>
+            </td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+     </div>
+     <div class="col-md-2 index-amount">
+      <table class="table table-inverse table-bordered", style="border-color: #3C2A21;">
+          <tbody>
+            <tr>
+              <th style="background-color: rgba(60, 42, 33, 0.5);">送料</th>
+              <td class="text-center"><%= @order.postage %>円</td>
+            </tr>
+            <tr>
+              <th style="background-color: rgba(60, 42, 33, 0.5);">商品合計</th>
+              <td class="text-center"><%= @total_amount.to_s(:delimited) %>円</td>
+            </tr>
+            <tr>
+              <th style="background-color: rgba(60, 42, 33, 0.5);">請求合計</th>
+              <td class="text-center"><%= @order.total_amount.to_s (:delimited) %>円</td>
+          </tbody>
+       </table>
+     </div>
+  </div>
+
+  <div class="row justify-content-center mt-4 mx-auto">
+    <div class="col-md-2">
+      <h5><strong>〜支払方法〜</strong></h5>
+    </div>
+    <div class="col-md-8">
+      <%= @order.payment_method_i18n %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-4 mx-auto">
+    <div class="col-md-2">
+      <h5><strong>〜お届け先〜</strong></h5>
+    </div>
+   <div class="col-md-8">
+      <%= @address %><br>
+      <%= @order.name %>
+   </div>
+  </div>
+
+  <div class="row mt-5">
+    <div class="col text-center">
+      <%= form_with model: @order, url: orders_path, method: :post  do |f| %>
+       <%= f.hidden_field :shopping_name %>
+       <%= f.hidden_field :shopping_postcode %>
+       <%= f.hidden_field :shopping_address %>
+       <%= f.submit '注文を確定する', class: 'btn', style: "background-color: #1A120B; color: #E5E5CB;", data: { confirm: "注文確定をします🍰 よろしいですか？" }   %>
+      <% end %>
+    </div>
+  </div>
+</main>

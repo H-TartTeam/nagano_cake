@@ -18,7 +18,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文情報確認画面を表示するアクション
   def confirm
-    #注文情報入力されたデータが入って本当に存在するかどうか判断
+    #注文情報入力されたデータが入って本当に存在するかどうか
     if params[:order]
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
