@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
       # カートが空でない場合、新しい注文オブジェクトを生成
       @order = Order.new
       # 登録済みの配送先情報を取得し、フォームで選択するためのオブジェクトに割り当て
-      @shipping_address = ShoppingAddress.all
+      @shopping_address = ShoppingAddress.all
     else
       # カートが空の場合、エラーメッセージを表示して前のページにリダイレクト
       flash[:notice] = "カートが空です"
@@ -27,24 +27,24 @@ class Public::OrdersController < ApplicationController
       @order_total_amount = @total_amount + @order.postage.to_i
 
       if params[:order][:select_address] == "0"
-        @order.shipping_post_code = current_customer.post_code
-        @order.shipping_address = current_customer.address
-        @order.shipping_name = current_customer.last_name + current_customer.first_name
+        @order.shopping_post_code = current_customer.post_code
+        @order.shopping_address = current_customer.address
+        @order.shopping_name = current_customer.last_name + current_customer.first_name
       elsif params[:order][:select_address] == "1"
         if ShippingAddress.exists?(id: params[:order][:address_id])
           @address = ShippingAddress.find(params[:order][:address_id])
-          @order.shipping_name = @address.name
-          @order.shipping_post_code = @address.postal_code
-          @order.shipping_address = @address.address
+          @order.shopping_name = @address.name
+          @order.shopping_post_code = @address.postal_code
+          @order.shopping_address = @address.address
         else
           # 配送先情報が見つからない場合、エラーメッセージを表示して注文情報入力画面を再表示
           flash[:notice] = "配送先情報がありません"
           render 'new'
         end
       elsif params[:order][:select_address] == "2"
-        @order.shipping_name = params[:order][:shipping_name]
-        @order.shipping_post_code = params[:order][:shipping_post_code]
-        @order.shipping_address = params[:order][:shipping_address]
+        @order.shopping_name = params[:order][:shopping_name]
+        @order.shopping_post_code = params[:order][:shopping_post_code]
+        @order.shopping_address = params[:order][:shopping_address]
       else
         # フォームの入力が不正な場合、注文情報入力画面を再表示
         render 'new'
@@ -115,6 +115,6 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:customer_id, :postage, :billing_amount, :status, :payment_method, :shipping_name, :shipping_post_code, :shipping_address)
+    params.require(:order).permit(:customer_id, :postage, :total_amount, :status, :payment_method, :name, :postcode, :address)
   end
 end
