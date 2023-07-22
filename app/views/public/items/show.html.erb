@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-sm-20 px-sm-0 mx-auto mb-5">
-      
+
       <% if @item.image.attached? %>
         <%= image_tag @item.image, style: "max-width: 700px;" %>
       <% else %>
@@ -26,11 +26,27 @@
           <td>税込価格</td>
           <td>¥<%= (@item.price * 1.1).round %></td>
         </tr>
-        
+        <tr>
+          <% if @item.is_available == true %>
+              <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
+              <%= f.label :quantity, "個数選択" %>
+              <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+              <%= f.hidden_field :item_id, value: @item.id %>
+              <%= f.submit "カートに入れる" %>
+            <% end %>
+        <% end %>
+        </tr>
+
       </table>
-      
+
       <div class="form-action">
+<<<<<<< HEAD
        <%= link_to "Back", items_path, class: "btn btn-secondary", style: "background-color: #dc8ba7;" %>
+=======
+        
+        <%= link_to "一覧ページに戻る", items_path, class: "btn btn-secondary" %>
+
+>>>>>>> origin/develop
       </div>
     </div>
   </div>

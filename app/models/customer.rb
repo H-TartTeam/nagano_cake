@@ -14,6 +14,10 @@ class Customer < ApplicationRecord
   def full_name_kana
     "#{last_name_kana} #{first_name_kana}"
   end
+  # is_deletedがfalseならtrueを返し、ログイン時に退会済みのユーザーが同じアカウントでログイン出来ない設定
+  def active_for_authentication?
+    super && (is_deleted == false)
+  end
 
   #制限をかけるためにはバリデーションが必要
   validates :last_name, presence: true
