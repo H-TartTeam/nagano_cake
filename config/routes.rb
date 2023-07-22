@@ -28,8 +28,8 @@ Rails.application.routes.draw do
       member do
         get :complete
       end
-    end
     get 'orders/confirm' => 'orders#confirm', as: 'confirm_order'
+    end
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
         delete 'clear'

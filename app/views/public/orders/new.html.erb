@@ -1,42 +1,4 @@
 <main>
   <h4>注文情報入力</h4>
 
-  <%= form_with model: @order, url: "/orders", method: :post do |form| %>
-    <!-- 支払い方法のラジオボタン -->
-    <h4>支払い方法</h4>
-    <%= form.label :payment_method, "銀行振り込み" %>
-    <%= form.radio_button :payment_method, :bank_transfer %>
-    <br>
-    <%= form.label :payment_method, "クレジットカード払い" %>
-    <%= form.radio_button :payment_method, :credit_card %>
-    <br>
-
-    <h4>お届け先</h4>
-    <!-- 既存の住所選択用ラジオボタン -->
-    <%= form.label :address_option, "登録済住所から選択" %>
-    <%= form.radio_button :address_option, "registered" %>
-    <br>
-    <!-- 新しい住所入力用フォーム -->
-    <%= form.label :address_option, "新しいお届け先" %>
-    <%= form.radio_button :address_option, "new" %>
-    <br>
-
-    <!-- 新しい住所入力用フォームが表示される条件を指定 -->
-    <%= form.fields_for :new_address, @shipping_address do |new_address_form| %>
-      <%= new_address_form.label :postcode, "郵便番号" %>
-      <%= new_address_form.text_field :postcode %>
-      <br>
-
-      <%= new_address_form.label :address, "住所" %>
-      <%= new_address_form.text_area :address %>
-      <br>
-
-      <%= new_address_form.label :name, "宛名" %>
-      <%= new_address_form.text_field :name %>
-      <br>
-    <% end %>
-  <% end %>
-
-  <%= link_to "確認画面に進む", confirm_order_path %>
-
 </main>
