@@ -18,51 +18,43 @@ class Public::OrdersController < ApplicationController
 
   # 注文情報確認画面を表示するアクション
   def confirm
+    #注文情報入力されたデータが入って本当に存在するかどうか判断
     if params[:order]
       @order = Order.new(order_params)
       @order.customer_id = current_customer.id
       @cart_items = current_customer.cart_items
       @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
       @order.postage = 800
-      @order_total_amount = @total_amount + @order.postage.to_i
+      @order.total_amount = @total_amount + @order.postage.to_i
 
+      #配送先データが格納されて (ラジオボタンのenumの数字)
       if params[:order][:select_address] == "0"
-        @order.shopping_post_code = current_customer.post_code
-        @order.shopping_address = current_customer.address
-        @order.shopping_name = current_customer.last_name + current_customer.first_name
+        #自分の住所に配送を選んだ場合
+        @order.postcode = current_customer.postcode
+        @order.address = current_customer.address
+        @order.name = current_customer.last_name + current_customer.first_name
+      #登録した配送先を選んだ場合
       elsif params[:order][:select_address] == "1"
-        if ShippingAddress.exists?(id: params[:order][:address_id])
-          @address = ShippingAddress.find(params[:order][:address_id])
-          @order.shopping_name = @address.name
-          @order.shopping_post_code = @address.postal_code
-          @order.shopping_address = @address.address
+        #本当に登録されている配送先かどうか判断
+        if ShoppingAddress.exists?(id: params[:order][:address_id])
+          @address = ShoppingAddress.find(params[:order][:address_id])
+          @order.name = @address.name
+          @order.postcode = @address.postal_code
+          @order.address = @address.address
         else
           # 配送先情報が見つからない場合、エラーメッセージを表示して注文情報入力画面を再表示
           flash[:notice] = "配送先情報がありません"
           render 'new'
         end
+      #新しい配送先を選んだ場合
       elsif params[:order][:select_address] == "2"
-        @order.shopping_name = params[:order][:shopping_name]
-        @order.shopping_post_code = params[:order][:shopping_post_code]
-        @order.shopping_address = params[:order][:shopping_address]
+        @order.name = params[:order][:name]
+        @order.postcode = params[:order][:postcode]
+        @order.address = params[:order][:address]
       else
         # フォームの入力が不正な場合、注文情報入力画面を再表示
         render 'new'
       end
-      # セッションに注文情報を保存
-      session[:order] = @order.attributes
-    end
-
-    # セッションから注文情報を取得し、確認画面に表示するための情報を取得
-    if session[:order]
-      @order = Order.new(session[:order])
-      @cart_items = current_customer.cart_items
-      @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-      @order.postage = 800
-      @order_total_amount = @total_amount + @order.postage.to_i
-      @address = "〒" + @order.shipping_post_code + @order.shipping_address
-    else
-      @order = Order.new
     end
   end
 
@@ -73,7 +65,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items
     @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.postage = 800
-    @order.billing_amount = @total_amount + @order.postage.to_i
+    @order.total_amount = @total_amount + @order.postage.to_i
 
     if @order.save
       # 注文が保存された場合、注文商品情報も保存する
