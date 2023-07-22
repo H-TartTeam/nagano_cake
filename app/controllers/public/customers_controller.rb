@@ -1,6 +1,6 @@
 class Public::CustomersController < ApplicationController
 
-   #before_action :authenticate_customer!
+   before_action :authenticate_customer!
 
   def show
     @customer = current_customer
@@ -20,7 +20,7 @@ class Public::CustomersController < ApplicationController
     end
   end
 
-  def confirm_withdraw
+  def withdraw
     @customer = Customer.find(current_customer.id)
     # is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @customer.update(is_deleted: true)

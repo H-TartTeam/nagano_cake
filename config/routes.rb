@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
   patch '/customers/withdraw' => 'customers#withdraw'
   resources :items, only: [:index, :show]
-  resource :customers, only: [:new, :create, :show, :edit, :update, :confirm_withdraw, :withdraw]
+  resource :customers, only: [:new, :create, :show, :edit, :update]
   resources :orders, only: [:new, :index, :show, :confirm, :complete]
   resources :cart_items, only: [:index, :update, :create, :destroy] do
    collection do
