@@ -1,8 +1,7 @@
 class Admin::HomesController < ApplicationController
-  before_action :authenticate_admin!
+before_action :authenticate_admin!
 
   def top
-    @order = Order.new
+    @orders = Order.page(params[:page]).reverse_order.per(10)
   end
-
 end

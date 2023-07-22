@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show]
   resource :customers, only: [:new, :create, :show, :edit, :update]
   resources :orders, only: [:new, :index, :show, :confirm, :complete]
+  resources :addresses, only:[:new, :index, :create, :edit, :update, :destroy]
   resources :cart_items, only: [:index, :update, :create, :destroy] do
    collection do
     delete 'clear'
