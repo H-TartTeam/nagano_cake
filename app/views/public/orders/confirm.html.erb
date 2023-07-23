@@ -14,6 +14,7 @@
     <tbody>
       <% @cart_items.each do |cart_item| %>
         <tr>
+          <!--数量と税込価格を表示-->
           <td><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
           <td><%= cart_item.quantity %></td>
           </td>
