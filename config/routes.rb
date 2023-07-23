@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -16,14 +16,9 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :edit, :create, :update, :new]
  end
 
+
   scope module: :public do
-    root "homes#top"
-    get "/about" => "homes#about"
-    get 'customers/mypage' => 'customers#show'
-    get 'customers/infomation/edit' => 'customers#edit'
-    patch '/customers/edit' => 'customers#update'
-    resources :items, only: [:index, :show]
-    resources :customers, only: [:new, :create, :show, :edit, :update, :confirm_withdraw, :withdraw]
+
     # orders
     get 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :create, :index, :show] do
@@ -34,11 +29,23 @@ Rails.application.routes.draw do
       end
     end
     #cart_item
-    resources :cart_items, only: [:index, :update, :create, :destroy] do
-      collection do
-        delete 'clear'
-      end
-    end
+
+  root "homes#top"
+  get "/about" => "homes#about"
+  get 'customers/mypage' => 'customers#show'
+  get 'customers/infomation/edit' => 'customers#edit'
+  patch '/customers/infomation' => 'customers#update'
+  get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
+  patch '/customers/withdraw' => 'customers#withdraw'
+  resources :items, only: [:index, :show]
+  resource :customers, only: [:new, :create, :show, :edit, :update]
+
+  resources :addresses, only:[:new, :index, :create, :edit, :update, :destroy]
+  resources :cart_items, only: [:index, :update, :create, :destroy] do
+   collection do
+    delete 'clear'
+   end
+
   end
  end
 end
