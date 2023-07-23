@@ -13,14 +13,21 @@ class Public::ItemsController < ApplicationController
   def index
     @items = Item.all
   end
-  
+
   def search
-    #Viewのformで取得したパラメータをモデルに渡す
-    @keyword = params[:post][:search] if params[:post]
+    @keyword = params[:name][:search] if params[:name]
     @item_all = Item.search(@keyword)
     @item = Kaminari.paginate_array(@item_all).page(params[:page]).per(10)
+    render :search
   end
-  
+
+  def show_search_results
+    @keyword = params[:search]
+    @item_all = Item.where(['content LIKE(?) OR title LIKE(?)', "%#{@keyword}%", "%#{@keyword}%"])
+    @item = Kaminari.paginate_array(@item_all).page(params[:page]).per(10)
+    render :search
+  end
+
   private
 
   def items_params

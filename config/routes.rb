@@ -8,8 +8,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  post '/search',  to: 'posts#search'
-  get  '/search',  to: 'posts#search'
+  post '/search', to: 'items#search'
+  get '/search', to: 'items#show_search_results' # 別のアクション名を使用
 
   namespace :admin do
     get "/" => "homes#top"

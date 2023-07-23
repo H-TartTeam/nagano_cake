@@ -25,9 +25,8 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
-  def self.search(search)
-    return Item.all unless search
-    Post.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+  def search
+    Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
   end
 
 
