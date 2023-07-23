@@ -61,3 +61,5 @@ gem 'devise'
 gem "enum_help"
 #ページネーションに使用
 gem 'kaminari'
+
+gem 'pry-rails'

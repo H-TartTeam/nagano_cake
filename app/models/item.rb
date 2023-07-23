@@ -36,7 +36,6 @@ class Item < ApplicationRecord
   belongs_to :genre
   has_many :orders, through: :order_items
 
-  has_one_attached :image
 
   with_options presence: true do
     validates :name, presence: true
