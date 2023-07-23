@@ -6,4 +6,10 @@ class CartItem < ApplicationRecord
   def subtotal
     item.taxin_price * quantity
   end
+
+  #税込価格を計算するメソッドをItemモデルから引き出している
+  def taxin_price
+    item.taxin_price
+  end
+
 end
