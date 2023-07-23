@@ -18,18 +18,6 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-
-    # orders
-    get 'orders/confirm' => 'orders#confirm'
-    resources :orders, only: [:new, :create, :index, :show] do
-      #データ全体に行いたいのでcollection
-      collection do
-        post 'confirm'
-        get 'completed'
-      end
-    end
-    #cart_item
-
   root "homes#top"
   get "/about" => "homes#about"
   get 'customers/mypage' => 'customers#show'
@@ -39,13 +27,21 @@ Rails.application.routes.draw do
   patch '/customers/withdraw' => 'customers#withdraw'
   resources :items, only: [:index, :show]
   resource :customers, only: [:new, :create, :show, :edit, :update]
-
   resources :addresses, only:[:new, :index, :create, :edit, :update, :destroy]
+ # orders
+  get 'orders/confirm' => 'orders#confirm'
+  resources :orders, only: [:new, :create, :index, :show] do
+   #データ全体に行いたいのでcollection
+   collection do
+    post 'confirm'
+    get 'completed'
+   end
+  end
+  #cart_item
   resources :cart_items, only: [:index, :update, :create, :destroy] do
    collection do
     delete 'clear'
    end
-
   end
  end
-end
+ end
