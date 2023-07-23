@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  get 'products/search', to: 'products#search', as: :search_products
+
   namespace :admin do
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]

@@ -25,13 +25,11 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
-
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :destroy
   belongs_to :genre
   has_many :orders, through: :order_items
 
-  has_one_attached :image
 
   with_options presence: true do
     validates :name, presence: true
