@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
         @order.address = current_customer.address
         #ログインしているユーザーの氏と名が入る
         @order.name = current_customer.last_name + current_customer.first_name
-             #登録した配送先を選んだ場合
+            #登録した配送先を選んだ場合
       elsif params[:order][:select_address] == "1"
         #本当に登録されている配送先かどうか判断
         if ShoppingAddress.exists?(id: params[:order][:address_id])
@@ -94,11 +94,12 @@ class Public::OrdersController < ApplicationController
         @order_item = OrderItem.new
         #cart_itemデータの中にあるitem_idを取り出して変数に格納
         @order_item.item_id = cart_item.item_id
-        #注文確定されたデータを
+        #注文確定されたデータを格納
         @order_item.order_id = @order.id
-        @order_item.taxin_price = cart_item.price
+        @order_item.taxin_price = cart_item.taxin_price
+        #注文確定された数量データを格納
         @order_item.quantity = cart_item.quantity
-        #注文ステータス
+        #注文ステータスをデフォルトで０にしている
         @order_item.status = 0
         @order_item.save
       end

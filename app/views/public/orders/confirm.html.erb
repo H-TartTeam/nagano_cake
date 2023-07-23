@@ -2,42 +2,27 @@
 
   <h4>注文情報確認</h4>
 
-  <table>
-    <thead>
+ <table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cart_items.each do |cart_item| %>
       <tr>
-        <th>商品名</th>
-        <th>単価（税込）</th>
-        <th>数量</th>
-        <th>小計</th>
+        <td><%= cart_item.item.name %></td>
+        <td><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
+        <td><%= cart_item.quantity %></td>
+        <td><%= (cart_item.item.taxin_price * cart_item.quantity).to_s(:delimited) %>円</td>
       </tr>
-    </thead>
-    <tbody>
-      <% @cart_items.each do |cart_item| %>
-        <tr>
-          <!--数量と税込価格を表示-->
-          <td><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
-          <td><%= cart_item.quantity %></td>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
+    <% end %>
+  </tbody>
+</table>
 
-  <table>
-    <tbody>
-      <tr>
-        <th>送料</th>
-        <td><%= @order.postage %>円</td>
-      </tr>
-      <tr>
-        <th>商品合計</th>
-        <td><%= @total_amount.to_s(:delimited) %>円</td>
-      </tr>
-      <tr>
-        <th>請求合計</th>
-        <td><%= @order.total_amount.to_s (:delimited) %>円</td>
-    </tbody>
-  </table>
 
   <h5>支払方法</h5>
   <div><%= @order.payment_method_i18n %></div>
@@ -46,13 +31,16 @@
   <div>
     <%= @address %><br>
     <%= @order.name %>
+    〒<%= @order.postcode %>
+    <%= @order.address %><br>
+    <%= @order.name %>
   </div>
 
   <div>
     <%= form_with model: @order, url: orders_path, method: :post  do |f| %>
-      <%= f.hidden_field :shopping_name %>
-      <%= f.hidden_field :shopping_postcode %>
-      <%= f.hidden_field :shopping_address %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :postcode %>
+      <%= f.hidden_field :address %>
       <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }   %>
     <% end %>
   </div>
