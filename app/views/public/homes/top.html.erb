@@ -3,3 +3,79 @@
 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
 <%= link_to "ログイン",  new_customer_session_path %>
 <%= link_to "新規登録", new_customer_registration_path %>
+
+<div class="plate mx-auto" id="cork">
+  </div>
+<div class="home-box mx-auto my-3">
+    <p class="home-text">ようこそ、ながのCAKEへ！<br>
+    このサイトは、ケーキ販売のECサイトになります。
+    会員でない方も商品の閲覧はできますが、<br>
+    購入には会員登録が必要になります。
+    </p>
+  <style>
+  .slide {
+    position: relative; /* 親要素に対して相対位置を指定 */
+    width: 100%;
+    height: 600px; /* 必要な高さを指定 */
+    overflow: hidden; /* 高さを超える部分を隠す */
+  }
+
+  .slide-item {
+    position: absolute; /* 要素の位置を絶対位置で指定 */
+    top: 0; /* 上端に配置 */
+    left: 0; /* 左端に配置 */
+    width: 100%;
+    height: 100%;
+    display: none; /* 最初は非表示 */
+  }
+</style>  
+    
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+    $('.slide-item').hide(); 
+    $('.slide-item:first').show(); 
+
+
+    setInterval(function() {
+      var currentSlide = $('.slide-item:visible');
+      var nextSlide = currentSlide.next('.slide-item');
+
+      if (nextSlide.length === 0) {
+        nextSlide = $('.slide-item:first');
+      }
+
+      currentSlide.fadeOut(500);
+      nextSlide.fadeIn(500);
+    }, 3000); // 3秒ごとにスライドを切り替え
+  });
+</script>
+
+
+<div class="slide">
+  <div class="slide-item">
+    <%= image_tag "shortcake.jpg", class: "slide-img" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "cakeshop.jpg", class: "slide-img" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "crepescake.jpg", class: "slide-img" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "cupcakes.jpg", class: "slide-img" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "brownie.jpg", class: "slide-img" %>
+  </div>
+</div>
+</div>
+</div>
+
+
+<div class="container new-item">
+  <h2>新着商品</h2>
+ 
+  <div class="all-items-show-button"><%= link_to "全ての商品をみる", items_path %></div>
+</div>
