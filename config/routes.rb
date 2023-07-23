@@ -1,13 +1,15 @@
 Rails.application.routes.draw do
-
-  devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
-  sessions: 'public/sessions'
+    sessions: 'public/sessions'
   }
 
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
+
+  post '/search',  to: 'posts#search'
+  get  '/search',  to: 'posts#search'
 
   namespace :admin do
     get "/" => "homes#top"
@@ -26,21 +28,21 @@ Rails.application.routes.draw do
     patch '/customers/withdraw' => 'customers#withdraw'
     resources :items, only: [:index, :show]
     resource :customers, only: [:new, :create, :show, :edit, :update]
-    resources :addresses, only:[:new, :index, :create, :edit, :update, :destroy]
+    resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
     # orders
     get 'orders/confirm' => 'orders#confirm'
     resources :orders, only: [:new, :create, :index, :show] do
-    #データ全体に行いたいのでcollection
+      # データ全体に行いたいのでcollection
       collection do
         post 'confirm'
         get 'completed'
       end
     end
-    #cart_item
+    # cart_item
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
-      delete 'clear'
+        delete 'clear'
       end
     end
   end
- end
+end
