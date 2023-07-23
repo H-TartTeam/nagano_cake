@@ -22,7 +22,8 @@ class Admin::ItemsController < ApplicationController
     end
     
     def show
-    @item = Item.find(params[:id])  
+    @item = Item.find(params[:id]) 
+    @item_images = @item.item_images
     end
     
     def edit
