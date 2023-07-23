@@ -20,6 +20,12 @@ class Item < ApplicationRecord
     (item.taxin_price * quantity.to_i).to_i
   end
 
+  def get_item_image
+    #すり抜け防止
+    (image.attached?) ? image : 'brownie.jpg'
+  end
+
+
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :destroy
   belongs_to :genre

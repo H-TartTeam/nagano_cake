@@ -46,14 +46,14 @@
             <%= f.radio_button :select_address, 2 %>
             <%= f.label :address_number_2, "【新しいお届け先】"%>
             <!-- 新しいお届け先の郵便番号入力欄 -->
-            <%= f.label :shopping_post_code, "郵便番号(ハイフンなし)" %>
-            <%= f.text_field :shopping_post_code, placeholder: "0000000" %>
+            <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+            <%= f.text_field :postcode, placeholder: "0000000" %>
             <!-- 新しいお届け先の住所入力欄 -->
-            <%= f.label :shopping_address, "住所" %>
-            <%= f.text_field :shopping_address, placeholder: "長野県伊那市〇〇町"  %>
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address, placeholder: "長野県伊那市〇〇町"  %>
             <!-- 新しいお届け先の宛名入力欄 -->
-            <%= f.label :shopping_name, "宛名" %>
-            <%= f.text_field :shopping_name, placeholder: "田中実" %>
+            <%= f.label :name, "宛名" %>
+            <%= f.text_field :name, placeholder: "山田花子" %>
           </td>
         </tr>
       </tbody>
