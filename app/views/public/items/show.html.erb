@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
-    <!--%= render 'public/homes/list_search', genres: @genres %>-->
-  <!--% end %>-->
+    <!--%= render 'public/homes/genre_serch', genres:  Genre.all %>-->
  </div>
 </div>
   </div>
@@ -41,12 +40,10 @@
       </table>
 
       <div class="form-action">
+        
+        <%= link_to "一覧ページに戻る", items_path, class: "btn btn-secondary" %>
 
-        <%= link_to "Buck to index", items_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>
 </div>
-
-
-

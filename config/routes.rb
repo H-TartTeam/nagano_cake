@@ -1,20 +1,20 @@
 Rails.application.routes.draw do
+  
+ devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
 
-  devise_for :customers, skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+ sessions: "admin/sessions"
+}
 
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
-
-  namespace :admin do
-    get "/" => "homes#top"
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :edit, :create, :update]
-    resources :items, only: [:index, :show, :edit, :create, :update, :new, :subtotal]
-  end
+ namespace :admin do
+  get "/" => "homes#top"
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :genres, only: [:index, :edit, :create, :update]
+  resources :items, only: [:index, :show, :edit, :create, :update, :new]
+ end
 
   scope module: :public do
     root "homes#top"
@@ -40,4 +40,5 @@ Rails.application.routes.draw do
       end
     end
   end
+ end
 end
