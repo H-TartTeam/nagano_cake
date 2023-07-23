@@ -45,7 +45,7 @@ class Public::OrdersController < ApplicationController
             #登録した配送先を選んだ場合
       elsif params[:order][:select_address] == "1"
         #本当に登録されている配送先かどうか判断
-        if ShoppingAddress.exists?(id: params[:order][:address_id])
+        if params[:order][:address_id]
           #注文情報入力で選ばれた配送先のIDを入れている
           @address = ShoppingAddress.find(params[:order][:address_id])
           #IDから名前を取り出して入れる
@@ -96,11 +96,10 @@ class Public::OrdersController < ApplicationController
         @order_item.item_id = cart_item.item_id
         #注文確定されたデータを格納
         @order_item.order_id = @order.id
-        @order_item.taxin_price = cart_item.taxin_price
+        #税抜価格データを格納
+        @order_item.price = cart_item.item.price
         #注文確定された数量データを格納
         @order_item.quantity = cart_item.quantity
-        #注文ステータスをデフォルトで０にしている
-        @order_item.status = 0
         @order_item.save
       end
       # 注文が完了したらカートを空にして、注文完了画面にリダイレクトする
@@ -120,13 +119,10 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴一覧を表示するアクション
   def index
-    @orders = current_customer.orders.all.page(params[:page]).per(5).order(created_at: :DESC)
   end
 
   # 注文詳細画面を表示するアクション
   def show
-    @order = current_customer.orders.find(params[:id])
-    @order_items = @order.order_items.all
   end
 
   private
