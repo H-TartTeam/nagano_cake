@@ -25,8 +25,8 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
-  def search
-    Item.where(['content LIKE(?) OR title LIKE(?)', "%#{search}%", "%#{search}%"])
+  def self.search_by_content_or_title(query)
+    where(['content LIKE ? OR title LIKE ?', "%#{query}%", "%#{query}%"])
   end
 
 

@@ -8,9 +8,6 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-  post '/search', to: 'items#search'
-  get '/search', to: 'items#show_search_results' # 別のアクション名を使用
-
   namespace :admin do
     get "/" => "homes#top"
     resources :customers, only: [:index, :show, :edit, :update]
@@ -26,6 +23,7 @@ Rails.application.routes.draw do
     patch '/customers/infomation' => 'customers#update'
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw'
+    get "search", to: "itemss#search"
     resources :items, only: [:index, :show]
     resource :customers, only: [:new, :create, :show, :edit, :update]
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
