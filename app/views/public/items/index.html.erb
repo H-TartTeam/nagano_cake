@@ -13,7 +13,15 @@
                       <% end %>
                   </div>
             </div>
-            </div>
-          <% end %>
-      </div>
+           <% end %>
+         </p>
+    <p><strong><%= f.name %></strong>（<%= f.sale_status %>）</p>
+    <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
   </div>
+ </div>
+        <div class="d-flex justify-content-center mt-4"><%= paginate @items %></div>
+
+       </div>
+    </div>
+  </div>
+</div>

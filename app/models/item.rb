@@ -20,12 +20,17 @@ class Item < ApplicationRecord
     (item.taxin_price * quantity.to_i).to_i
   end
 
+  has_one_attached :image
+
+  def get_item_image
+    #すり抜け防止
+    (image.attached?) ? image : 'brownie.jpg'
+  end
+
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :destroy
   belongs_to :genre
   has_many :orders, through: :order_items
-
-  has_one_attached :image
 
   with_options presence: true do
     validates :name, presence: true
