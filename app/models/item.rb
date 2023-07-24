@@ -32,6 +32,10 @@ class Item < ApplicationRecord
     validates :introduction, presence: true
     validates :is_available, presence: true
     validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
-    validates :image
+    # validates :image
+  end
+
+  def get_item_image
+    (image.attached?) ? image : 'no_image.jpg'
   end
 end

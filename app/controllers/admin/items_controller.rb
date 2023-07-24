@@ -23,7 +23,7 @@ class Admin::ItemsController < ApplicationController
     
     def show
     @item = Item.find(params[:id]) 
-    @item_images = @item.item_images
+    @genre = Genre.all
     end
     
     def edit
