@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  
+
   devise_for :customers, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :create, :update, :new]
+    resources :orders, only: [:show, :update]
   end
 
   scope module: :public do
