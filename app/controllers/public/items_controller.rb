@@ -1,27 +1,32 @@
 class Public::ItemsController < ApplicationController
 
-  def show
-    @item = Item.find(params[:id])
-    # @image = @item.image
-    @genre = Genre.all
-    @genre = Genre.find(params[:id])
-    @cart_item = CartItem.new
-  end
 
-  def genre_search
-    @genre = Genre.find(params[:id])
-    @items = @genre.items.order(created_at: :DESC)
-  end
+ def show
+  @item = Item.find(params[:id])
+  # @image = @item.image
+  @genre = Genre.all
+  @genre = Genre.find(params[:id])
+  @cart_item = CartItem.new
+ end
 
-  def index
-    @items = Item.all
-    @genres = Genre.all
-  end
+ def genre_search
+  @genre = Genre.find(params[:id])
+  @items = @genre.items.order(created_at: :DESC)
+ end
 
-  private
+ def index
+  @items = Item.all
+  @genres = Genre.all
+ end
 
-  def items_params
-    params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_available)
-  end
+
+ private
+
+
+ def items_params
+  params.require(:item).permit(:genre_id, :name, :introduction, :price, :is_available)
+ end
+
 
 end
+

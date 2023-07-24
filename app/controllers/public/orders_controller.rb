@@ -119,6 +119,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴一覧を表示するアクション
   def index
+    @orders = current_customer.orders
   end
 
   # 注文詳細画面を表示するアクション

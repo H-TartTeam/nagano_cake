@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+
   enum status: {
     販売中: true,
     売り切れ: false
@@ -43,4 +44,5 @@ class Item < ApplicationRecord
   def get_item_image
     (image.attached?) ? image : 'no_image.jpg'
   end
+
 end
