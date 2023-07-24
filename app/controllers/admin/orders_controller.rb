@@ -12,8 +12,8 @@ class Admin::OrdersController < ApplicationController
 
     # 注文のステータスを更新
     if @order.update(order_params)
-      # もし注文のステータスが 支払確認済み）であれば、紐づく注文商品の制作ステータスを 制作待ちに更新
-      @order_items.update_all(production_status: "waiting_for_production") if @order.status == "confirmation_of_payment"
+      # もし注文のステータスが入金確認であれば、紐づく注文商品の制作ステータスを制作待ちに更新
+      @order_items.update_all(make_status: "waiting_for_production") if @order.status == "confirmation_of_payment"
     end
 
     redirect_to request.referer # 前のページにリダイレクトする

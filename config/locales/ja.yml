@@ -11,21 +11,14 @@ ja: # 日本語の設定を行う
         payment_method: # カラム名（payment_methodカラムに対して）
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-          
-#注文ステータス日本語設定
-
-   
-     
+        #注文ステータス日本語設定
         status:
           waiting_for_payment: "入金待ち"
           confirmation_of_payment: "入金確認"
           in_production: "製作中"
           preparing_to_ship: "発送準備中"
           shipped: "発送済み"
-          
-#製作ステータス日本語設定
-
-   
+      #製作ステータス日本語設定
       order_item:
         make_status:
           production_status:
