@@ -7,4 +7,13 @@ class Order < ApplicationRecord
   has_one :shopping_address
   belongs_to :customer
   has_many :order_items
+
+  def full_name
+    self.customer.last_name + " " + self.customer.first_name
+  end
+
+  def full_name_kana
+   self.customer.last_name_kana + " " + self.customer.first_name_kana
+  end
+
 end
