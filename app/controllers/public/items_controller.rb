@@ -1,5 +1,6 @@
 class Public::ItemsController < ApplicationController
 
+
  def show
   @item = Item.find(params[:id])
   # @image = @item.image
@@ -28,3 +29,4 @@ class Public::ItemsController < ApplicationController
 
 
 end
+
