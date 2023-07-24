@@ -14,10 +14,6 @@
 
   <body>
      <header>
-       
-      <%= form_tag(search_path, method: :get) do %>
-        <%= text_field_tag :query, params[:query], placeholder: "キーワードで検索" %>
-      <% end %>
 
       <div class="search"@query >
         <%= form_with(url: search_path, scope: :post, local: true) do |f| %>

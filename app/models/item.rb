@@ -25,11 +25,6 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
-  def self.search_by_content_or_title(query)
-    where(['content LIKE ? OR title LIKE ?', "%#{query}%", "%#{query}%"])
-  end
-
-
   has_many :cart_items, dependent: :destroy
   has_many :order_items, dependent: :destroy
   belongs_to :genre
