@@ -11,20 +11,24 @@ ja: # 日本語の設定を行う
         payment_method: # カラム名（payment_methodカラムに対して）
           credit_card: "クレジットカード"
           transfer: "銀行振込"
-# ja:
-      # enums:
-        # order:
-          status:
-            waiting_for_payment: "入金待ち"
-            confirmation_of_payment: "入金確認"
-            in_production: "製作中"
-            preparing_to_ship: "発送準備中"
-            shipped: "発送済み"
-# ja:
-      # enums:
-        order_item:
-          production_status:
-          unable_to_start: "着手不可"
-          waiting_for_production: "製作待ち"
+          
+#注文ステータス日本語設定
+ja:
+    enums:
+      order:
+        status:
+          waiting_for_payment: "入金待ち"
+          confirmation_of_payment: "入金確認"
           in_production: "製作中"
-          completion_of_production: "制作完了"
+          preparing_to_ship: "発送準備中"
+          shipped: "発送済み"
+          
+#製作ステータス日本語設定
+ja:
+    enums:
+      order_item:
+        production_status:
+        unable_to_start: "着手不可"
+        waiting_for_production: "製作待ち"
+        in_production: "製作中"
+        completion_of_production: "制作完了"
