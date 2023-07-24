@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :create, :update, :new]
     resources :orders, only: [:show, :update]
+    resources :order_items, only: [:update]
   end
 
   scope module: :public do

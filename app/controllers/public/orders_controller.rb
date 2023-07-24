@@ -100,7 +100,7 @@ class Public::OrdersController < ApplicationController
         @order_item.price = cart_item.item.price
         #注文確定された数量データを格納
         @order_item.quantity = cart_item.quantity
-        @order_item.save
+        @order_item.save!
       end
       # 注文が完了したらカートを空にして、注文完了画面にリダイレクトする
       current_customer.cart_items.destroy_all

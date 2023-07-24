@@ -8,7 +8,7 @@
         <td>
           <!-- 購入者のリンク -->
           <%= link_to admin_customer_path(@order.customer_id) do %>
-            <%= Customer.find(@order.customer_id).full_name %>
+            <%= @order.customer.full_name %>
           <% end %>
         </td>
       </tr>
@@ -63,7 +63,7 @@
           <td>
             <!-- 製作ステータスの更新フォーム -->
             <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true, method: :patch do |f| %>
-              <%= f.select :status, OrderItem.statuses_i18n.invert %>
+              <%= f.select :make_status, OrderItem.make_statuses_i18n.invert %>
               <%= f.submit "更新" %>
             <% end %>
           </td>
@@ -77,15 +77,15 @@
     <tbody>
       <tr>
         <td><strong>商品合計</strong></td>
-        <td><%= number_with_delimiter(@order.total_amount - @order.postage) %>円</td>
+        <td><%= (@order.total_amount - @order.postage).to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <td>送料</td>
-        <td><%= @order.postage.to_s(:total_amount) %>円</td>
+        <td><%= @order.postage.to_s(:delimited) %>円</td>
       </tr>
       <tr>
         <td><strong>請求金額合計</strong></td>
-        <td><%= @order.total_amount.to_s(:total_amount) %>円</td>
+        <td><%= @order.total_amount.to_s(:delimited) %>円</td>
       </tr>
     </tbody>
   </table>
