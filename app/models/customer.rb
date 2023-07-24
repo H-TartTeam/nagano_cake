@@ -5,7 +5,9 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items, dependent: :destroy
-  has_many :shopping_addresses
+
+  has_many :shopping_addresses, dependent: :destroy
+
 
   def full_name
     "#{last_name} #{first_name}"

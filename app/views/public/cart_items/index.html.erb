@@ -32,7 +32,7 @@
                 <%= f.hidden_field :customer_id, value: current_customer.id %>
                 <%= f.hidden_field :item_id, value: cart_item.item.id %>
                 <!--数量変更-->
-                <%= f.select :quantity, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10] %>
+                <%= f.select :quantity, (1..50).to_a, {} %>
                 <%= f.submit "変更" %>
               <% end %>
             </td>
