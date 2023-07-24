@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
-  
-  get "search" => "searches#search"
 
   namespace :admin do
     get "/" => "homes#top"
@@ -28,6 +26,7 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resource :customers, only: [:new, :create, :show, :edit, :update]
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
+    post "search" => "searches#search"
     # orders
     resources :orders, only: [:new, :create, :index, :show] do
       # データ全体に行いたいのでcollection
