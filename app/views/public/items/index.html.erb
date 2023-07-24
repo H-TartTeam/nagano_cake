@@ -1,6 +1,6 @@
 <div class="container">
   <h4 class = "col-3 text-center" style = "background-color:lightgray">商品一覧 (全<%= @items.count %>件)</h4>
-    <!--%= render 'genre_search', genre: @genre %>-->
+    <!--%= render 'genre_search', genre: @genre %>-->-->
       <div class="d-flex flex-wrap">
           <% @items.each do |item| %>
           <div class="col-md-3">
@@ -9,7 +9,7 @@
                     <%= link_to item_path(item.id) do %>
                         <%= image_tag item.get_item_image, size: "248x200" %>
                         <%= item.name %><br>
-                        <!--¥%= (@item.price * 1.1).round %>-->
+                        ¥<%= (item.price * 1.1).round %>
                       <% end %>
                   </div>
             </div>
