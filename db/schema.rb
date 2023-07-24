@@ -10,9 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 2023_07_17_064750) do
-=======
 ActiveRecord::Schema.define(version: 2023_07_18_090131) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
@@ -42,7 +39,6 @@ ActiveRecord::Schema.define(version: 2023_07_18_090131) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
->>>>>>> origin/develop
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -73,7 +69,7 @@ ActiveRecord::Schema.define(version: 2023_07_18_090131) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "last_name", null: false
-    t.string "last_name", null: false
+    t.string "first_name", null: false
     t.string "last_kana_name", null: false
     t.string "first_kana_name", null: false
     t.string "address", null: false
