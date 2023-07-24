@@ -124,6 +124,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文詳細画面を表示するアクション
   def show
+    @order = Order.find(params[:id])
   end
 
   private

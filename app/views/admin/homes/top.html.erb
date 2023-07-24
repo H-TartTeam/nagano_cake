@@ -16,10 +16,10 @@
         <% @orders.each do |orders| %>
         <tbody>
           <tr>
-            <td><%= link_to orders.created_at.strftime('%Y/%m/%d'), admin_order_path(orders) %></td>
+            <td><%= link_to orders.created_at.strftime('%Y/%m/%d'), order_path(orders) %></td>
             <td><%= orders.full_name %> 様</td>
-            <td><%= orders.order_histries.sum(:quantity) %>個</td>
-            <td><%= orders.order_status %></td>
+            <td><%= orders.order_items.sum(:quantity) %>個</td>
+            <td><%= orders.status %></td>
           </tr>
           <% end %>
 
