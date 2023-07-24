@@ -32,5 +32,4 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :is_deleted, inclusion: { in: [true, false] }
 
-
 end
