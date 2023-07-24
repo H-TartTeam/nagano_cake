@@ -8,6 +8,7 @@
 
     <script src="https://kit.fontawesome.com/7ea106af3e.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
@@ -28,7 +29,7 @@
             <% if admin_signed_in? %>
               <li class="nav-item">
                 <%= link_to admin_items_path do %>
-                  <i class="fas fa-cookie-bite">商品一覧</i>
+                  <i class="fa-solid fa-cake-candles">商品一覧</i>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -74,7 +75,7 @@
               </li>
               <li class="nav-item">
                 <%= link_to  items_path do %>
-                  <i class="fas fa-cookie-bite">商品一覧</i>
+                  <i class="fa-solid fa-cake-candles">商品一覧</i>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -93,12 +94,12 @@
             <!--ログイン前時のヘッダー-->
               <li class="nav-item">
                 <%= link_to about_path do %>
-                  <i class="fas fa-store-alt">About</i>
+                  <i class="fa-solid fa-heart">About</i>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to items_path do %>
-                  <i class="fas fa-cookie-bite">商品一覧</i>
+                  <i class="fa-solid fa-cake-candles">商品一覧</i>
                 <% end %>
               </li>
               <li class="nav-item">
@@ -108,7 +109,7 @@
               </li>
               <li class="nav-item">
                 <%= link_to  new_customer_session_path do%>
-                  <i class="fas fa-user">ログイン</i>
+                  <i class="fa-solid fa-right-to-bracket">ログイン</i>
                 <% end %>
               </li>
             <% end %>
@@ -124,6 +125,7 @@
     </main>
     <footer>
       <%= render "layouts/footer" %>
+</style>
     </footer>
   </body>
     

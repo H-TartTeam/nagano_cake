@@ -7,7 +7,6 @@ class Admin::ItemsController < ApplicationController
    @items = Item.all
   end
 
-
   def new
    @item = Item.new
   end
@@ -34,6 +33,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+
     @item = Item.find(params[:id])
    if @item.update(item_params)
     redirect_to admin_item_path(@item)
@@ -54,4 +54,4 @@ class Admin::ItemsController < ApplicationController
 
   def set_product
   end
- end
+end
