@@ -1,6 +1,8 @@
 <div class="container">
-  <h4 class = "col-3 text-center" style = "background-color:lightgray">商品一覧 (全<%= @items.count %>件)</h4>
-    <!--%= render 'genre_search', genre: @genre %>-->-->
+  <h4 class="col-3 text-center" style="background-color: pink; border-radius: 10px;">商品一覧 (全<%= @items.count %>件)</h4>
+    <!--%= render 'genre_search', locals: { genre: @genre } %>-->
+    <%= render 'genre_search', genres: @genres %>
+     <br>
       <div class="d-flex flex-wrap">
           <% @items.each do |item| %>
           <div class="col-md-3">
@@ -13,15 +15,9 @@
                       <% end %>
                   </div>
             </div>
-           <% end %>
-         </p>
-    <p><strong><%= f.name %></strong>（<%= f.sale_status %>）</p>
-    <p><strong>￥<%= f.price_without_tax.to_s(:delimited) %></strong></p>
+            </div>
+          <% end %>
+      </div>
+      <%= paginate @items %>
   </div>
- </div>
-        <div class="d-flex justify-content-center mt-4"><%= paginate @items %></div>
-
-       </div>
-    </div>
-  </div>
-</div>
+  
