@@ -61,3 +61,7 @@ gem 'devise'
 gem "enum_help"
 #ページネーションに使用
 gem 'kaminari'
+#rails cで使用
+gem 'pry-rails'
+#検索フォームに
+gem 'ransack'

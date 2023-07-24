@@ -5,8 +5,11 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items, dependent: :destroy
-
+  has_many :orders, dependent: :destroy
   has_many :shopping_addresses, dependent: :destroy
+
+
+
 
 
   def full_name
@@ -31,6 +34,5 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
   validates :is_deleted, inclusion: { in: [true, false] }
-
 
 end

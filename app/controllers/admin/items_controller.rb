@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+
   before_action :authenticate_admin!
   before_action :set_product, only: %i[show edit update]
 
@@ -27,27 +28,28 @@ class Admin::ItemsController < ApplicationController
     end
     
     def edit
-    @item = Item.find(params[:id])
-    end
-    
-    def update
-       @item = Item.find(params[:id])
-      if @item.update(item_params)
-        redirect_to admin_item_path(@item)
-      else
-      render :edit
-      end
-    end
-    
-    def search
-    end
-    
-    private
-    
-    def item_params
-      params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_available)
-    end
+  　　　　@item = Item.find(params[:id])
+  　　　　end
 
-    def set_product
-    end
+  　　　def update
+    @item = Item.find(params[:id])
+   if @item.update(item_params)
+    redirect_to admin_item_path(@item)
+   else
+   render :edit
+   end
   end
+
+  def search
+  end
+
+  private
+
+  def item_params
+   params.require(:item).permit(:image, :name, :introduction, :genre_id, :price, :is_available)
+  end
+
+
+  def set_product
+  end
+end
