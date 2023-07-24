@@ -28,14 +28,14 @@
     height: 100%;
     display: none; /* 最初は非表示 */
   }
-</style>  
-    
+</style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
   $(document).ready(function() {
 
-    $('.slide-item').hide(); 
-    $('.slide-item:first').show(); 
+    $('.slide-item').hide();
+    $('.slide-item:first').show();
 
 
     setInterval(function() {
@@ -75,7 +75,19 @@
 
 
 <div class="container new-item">
+
   <h2>新着商品</h2>
- 
+
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <%= link_to item_path(item) do %>
+          <%= image_tag item.get_item_image, size: "248x200" %>
+          <h3><%= item.name %></h3> <!-- 商品の名前を表示 -->
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
   <div class="all-items-show-button"><%= link_to "全ての商品をみる", items_path %></div>
 </div>
