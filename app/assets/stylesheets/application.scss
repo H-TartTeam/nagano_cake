@@ -1,0 +1,61 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ 
+ * {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+   color:#967E76;
+   font-family: "ヒラギノ丸ゴ Pro W4","Nunito","Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", sans-serif;
+ }
+ 
+header {
+  background-color:#F8E8EE;
+  padding: 10px;
+  margin: 0;
+  margin-bottom: 1rem;
+}
+
+body{
+    background-image: image-url('flower.jpg');
+    background-position: center center;
+    background-repeat: repeat;
+    background-size: cover;
+    padding: 10px;
+    margin: 0;
+    margin-bottom: 0;
+}
+
+footer {
+  background-color:#F8E8EE;
+  padding: 10px;
+  margin: 0;
+}
+
+/* リンクの文字色・背景色・カーソル時の色変更*/
+/*!importantは推奨されない使い方です*/
+.page-link {
+  background-color: #F7DBF0!important;
+}
+
+a{
+ color:#FFAAC9!important;
+}
+
+a:hover {
+  color:  #F675A8!important;
+}

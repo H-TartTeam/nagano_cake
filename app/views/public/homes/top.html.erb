@@ -6,6 +6,9 @@
     会員でない方も商品の閲覧はできますが、<br>
     購入には会員登録が必要になります。
     </p>
+    
+<div class="content-container">
+    <%= render 'public/items/genre_search', genres: @genres %>
   <style>
   .slide {
     position: relative; /* 親要素に対して相対位置を指定 */
@@ -68,6 +71,7 @@
 </div>
 
 
+
 <div class="container new-item">
 
   <h2>新着商品</h2>
@@ -76,7 +80,7 @@
     <% @items.each do |item| %>
       <li>
         <%= link_to item_path(item) do %>
-          <%= image_tag item.get_item_image, size: "248x200" %>
+          <%= image_tag item.get_item_image, size: "300x200" %>
           <h3><%= item.name %></h3> <!-- 商品の名前を表示 -->
         <% end %>
       </li>
