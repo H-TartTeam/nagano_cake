@@ -1,0 +1,32 @@
+<div class = "container">
+  <div class = "row">
+    <div class = "col">
+      <h4 class = "col-3 text-center" style = "background-color:lightgray">注文履歴一覧</h4>
+      <table class = "table table-hover">
+
+        <thead class = "thead-light">
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+
+        <% @orders.each do |orders| %>
+        <tbody>
+          <tr>
+            <td><%= link_to orders.created_at.strftime('%Y/%m/%d'), admin_order_path(orders) %></td>
+            <td><%= orders.full_name %></td>
+            <td><%= orders.order_item.quantity %></td>
+            <td><%= orders.order.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <div class="col-3 mx-auto">
+        <strong><%= paginate @orders %></strong>
+      </div>
+    </div>
+  </div>
+</div>
