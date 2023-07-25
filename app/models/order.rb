@@ -6,11 +6,19 @@ class Order < ApplicationRecord
 
   has_one :shopping_address
   has_many :order_items
+
   belongs_to :customer
 
   #名前を氏＋名を合わせて氏名で表示できるようにした
   def full_name
     "#{last_name} #{first_name}"
+
+  def full_name
+    self.customer.last_name + " " + self.customer.first_name
+  end
+
+  def full_name_kana
+   self.customer.last_name_kana + " " + self.customer.first_name_kana
   end
 
 end

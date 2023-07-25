@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
       # カートが空でない場合、新しい注文オブジェクトを生成
       @order = Order.new
       # 登録済みの配送先情報を取得し、フォームで選択するためのオブジェクトに割り当て
-      @shopping_address = ShoppingAddress.all
+      @shopping_address = current_customer.shopping_addresses
     else
       # カートが空の場合、エラーメッセージを表示して前のページにリダイレクト
       flash[:notice] = "カートが空です"
@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
           #IDから名前を取り出して入れる
           @order.name = @address.name
           #IDから郵便番号を取り出して入れる
-          @order.postcode = @address.postalcode
+          @order.postcode = @address.postcode #postcodeに修正
           #IDkら住所を取り出して入れる
           @order.address = @address.address
         else
@@ -119,10 +119,12 @@ class Public::OrdersController < ApplicationController
 
   # 注文履歴一覧を表示するアクション
   def index
+    @orders = current_customer.orders
   end
 
   # 注文詳細画面を表示するアクション
   def show
+    @order = Order.find(params[:id])
   end
 
   private

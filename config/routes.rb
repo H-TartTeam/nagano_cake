@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
+  
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+ sessions: "admin/sessions"
+}
 
   namespace :admin do
     get "/" => "homes#top"
@@ -44,5 +44,7 @@ Rails.application.routes.draw do
         delete 'clear'
       end
     end
+    resources :genres, only: [:show]
   end
+  
 end

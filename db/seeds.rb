@@ -1,7 +1,8 @@
- Admin.create!(
-   email: 'tarte@team',
-   password: '202306'
- )
+#Admin.create!(
+  #email: 'tarte@team',
+  #password: '202306'
+#)
+#二回目rails db:seedするときは、元々登録してた記述をコメントアウトする
 
 #ジャンルカラム記述
 Genre.create!(name: 'ケーキ')
@@ -11,6 +12,19 @@ Genre.create!(name: 'プリン')
 Genre.create!(name: 'キャンディ')
 Genre.create!(name: 'ドーナツ')
 
+
+Customer.create!(
+  email: 'hanako@com',
+  password: '887755',
+  last_name: '山田',
+  first_name: '花子',
+  last_kana_name: 'ヤマダ',
+  first_kana_name: 'ハナコ',
+  address: '東京都目黒区中目黒8',
+  postcode: '8888888',
+  phone_number: '7777777'
+)
+
 #アイテムカラム記述
 item = Item.create!(
    name: "いちごのショートケーキ",
@@ -19,27 +33,9 @@ item = Item.create!(
    is_available: true,
    price: 500,
   )
-  
+
  #モデルファイルにimageのバリデーションをつけるとエラーが起きるのでつけないこと。
  #画像がない場合の記述をしておくこと
  item.image.attach(io: File.open(Rails.root.join('./app/assets/images/shortcake.jpg')),filename:'shortcake.jpg')
-  
-  # {
-  #  name: "ブラウニー",
-  #  introduction: "ベルギー産のチョコレートをたっぷり使用したブラウニーです♡",
-  #  genre_id: 3,
-  #  is_available: true,
-  #  price: 250,
-  #  image: "brownie.jpg"
-  # }
 
 
-#Item.create(
-  # name: "商品1",
-  # introduction: "説明文",
-  # genre_id: 1,
-  # is_available: true,
-  # price: 1000,
-  # image: "image1.jpg"
-  # )
- 

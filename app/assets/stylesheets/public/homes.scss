@@ -1,3 +1,12 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.content-container {
+  display: flex; /* Flexboxを使用して横に並べる */
+  justify-content: space-between; /* 両要素の間隔を広げる */
+  align-items: flex-start; /* 要素の縦方向の配置を上端に揃える（必要に応じて調整） */
+}
+
+.slide {
+  margin-left: 1rem; /* 1rem分（1マス分）の下側のマージンを追加 */
+}

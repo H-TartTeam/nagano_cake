@@ -1,39 +1,51 @@
-<main>
+<div class="container">
+  <h2 class = "col-3 text-center" style = "background-color:lightgray">注文情報確認</h2>
+    <div class = "row">
+        <div class = "col-10">
+          <table class = "table table-hover table-bordered">
+             <thead class = "thead-light">
+              <tr>
+                <th>商品名</th>
+                <th>単価（税込）</th>
+                <th>数量</th>
+                <th>小計</th>
+              </tr>
+            </thead>
+              <% @cart_items.each do |cart_item| %>
+                <tbody>
+                  <tr>
+                    <td>
+                      <%= image_tag cart_item.item.get_item_image, size: "248x200" %>
+                      <%= cart_item.item.name %>
+                    </td>
+                    <td class = "text-center"><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
+                    <td><%= cart_item.quantity %>個</td>
+                    <td><%= (cart_item.item.taxin_price * cart_item.quantity).to_s(:delimited) %>円</td>
+                  </tr>
+                <% end %>
+                </tbody>
+          </table>
+        </div>
 
-  <h4>注文情報確認</h4>
 
- <table>
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-        <td><%= image_tag cart_item.item.get_item_image, size: "248x200" %><%= cart_item.item.name %></td>
-        <td><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
-        <td><%= cart_item.quantity %></td>
-        <td><%= (cart_item.item.taxin_price * cart_item.quantity).to_s(:delimited) %>円</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-
-  <h5>支払方法</h5>
-  <div><%= @order.payment_method_i18n %></div>
-
-  <h5>お届け先</h5>
-  <div>
-    <%= @address %><br>
-    〒<%= @order.postcode %>
-    <%= @order.address %><br>
-    <%= @order.name %>
-  </div>
+      <div class = "row">
+        <table class = "table table-borderless">
+          <tr>
+            <td class = "col-5"><strong>支払い方法</strong></td>
+              <td class = "col-12">
+                <%= @order.payment_method_i18n %>
+              </td>
+          </tr>
+          <tr>
+            <td class = "col-5"><strong>お届け先</strong></td>
+              <td class = "col-12">
+                〒<%= @order.postcode %>
+                <%= @order.address %></br>
+                <%= @order.name %>
+              </td>
+          </tr>
+        </table>
+      </div>
 
   <h5>請求金額</h5>
   <div>
@@ -43,6 +55,7 @@
   </div>
 
   <div>
+
     <!--Viewページで一時的見ている情報を保存するためにコントローラーに送る-->
     <%= form_with model: @order, url: orders_path, method: :post  do |f| %>
       <!--どのカラムにどのデータを保存したいかを指定-->
@@ -52,8 +65,13 @@
       <%= f.hidden_field :postage, :value => @order.postage %>
       <%= f.hidden_field :total_amount, :value => @order.total_amount %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-      <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }   %>
+</div>
+        <div class="row py-3">
+          <td class="col-12 text-center">
+            <td>
+            <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }, class: 'btn btn-success btn-lg' %>
+            </td>
+          </td>
+        </div>
     <% end %>
-  </div>
 
-</main>

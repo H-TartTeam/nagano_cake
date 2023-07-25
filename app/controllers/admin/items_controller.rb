@@ -3,9 +3,9 @@ class Admin::ItemsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_product, only: %i[show edit update]
 
-  def index
-    @items = Item.all
-  end
+    def index
+       @items = Item.page(params[:page]).per(10)
+    end
 
   def new
     @item = Item.new
@@ -51,4 +51,5 @@ class Admin::ItemsController < ApplicationController
 
     def set_product
     end
+
 end
