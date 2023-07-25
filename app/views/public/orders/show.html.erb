@@ -74,9 +74,9 @@
           <tbody>
             <tr>
               <td><%= order_item.item.name %></td>
-              <td><%= order_item.item.price.to_s(:delimited, delimiter: ',') %></td>
+              <td><%= order_item.item.price.to_s(:delimited) %>円</td>
               <td><%= order_item.quantity %></td>
-              <td><%= (order_item.item.price * order_item.quantity).to_s(:delimited, delimiter: ',') %></td>
+              <td><%= order_item.subtotal.to_s(:delimited) %>円</td>
             </tr>
           </tbody>
         <% end %>

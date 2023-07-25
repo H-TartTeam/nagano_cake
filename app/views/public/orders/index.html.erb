@@ -26,8 +26,8 @@
             <%= order_item.item.name %>
             <% end %>
           </td>
-          <td><%= order.total_amount %></td>
-          <td><%= order.status %></td>
+          <td><%= order.total_amount.to_s(:delimited) %>円</td>
+          <td><%= order.status_i18n %></td>
           <td><%= link_to "表示する", order_path(order), class: "btn btn-success btn-lg" %></td>
         </tr>
       </tbody>
