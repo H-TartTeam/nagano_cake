@@ -1,0 +1,92 @@
+<h4>注文履歴詳細</h4>
+<!-- 購入者情報 -->
+<table>
+  <tbody>
+    <tr>
+      <td>購入者</td>
+      <td>
+        <!-- 購入者のリンク -->
+        <%= link_to admin_customer_path(@order.customer_id) do %>
+          <%= @order.customer.full_name %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>注文日</td>
+      <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+    </tr>
+    <tr>
+      <td>配送先</td>
+      <td>
+        <!-- 配送先情報 -->
+        〒<%= @order.postcode.to_s.insert(3, "-") %>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </td>
+    </tr>
+    <tr>
+      <td>支払い方法</td>
+      <td><%= @order.payment_method_i18n %></td>
+    </tr>
+    <tr>
+      <td>注文ステータス</td>
+      <td>
+        <!-- 注文ステータスの更新フォーム -->
+        <%= form_with model: @order, url: admin_order_path(@order.id), local: true, method: :patch do |f| %>
+          <%= f.select :status, Order.statuses_i18n.invert %>
+          <%= f.submit "更新" %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- 注文商品一覧 -->
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価(税込)</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>製作ステータス</th>
+    </tr>
+  </thead>
+  <tbody>
+    <!--注文商品のデータを表示-->
+    <% @order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.name %></td>
+        <td><%= order_item.item.taxin_price.to_s(:delimited) %>円</td>
+        <td><%= order_item.quantity %></td>
+        <td><%= order_item.subtotal.to_s(:delimited) %>円</td>
+        <td>
+          <!-- 製作ステータスの更新フォーム -->
+          <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true, method: :patch do |f| %>
+            <!--セレクトを使用する場合はmodelを指定させることが多い。なぜならmodelを記述することによって対応したカラム（縦列）全て持ってくることが可能-->
+            <%= f.select :make_status, OrderItem.make_statuses_i18n.invert %>
+            <%= f.submit "更新" %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<!-- 合計金額表示 -->
+<table>
+  <tbody>
+    <tr>
+      <td><strong>商品合計</strong></td>
+      <td><%= (@order.total_amount - @order.postage).to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <td>送料</td>
+      <td><%= @order.postage.to_s(:delimited) %>円</td>
+    </tr>
+    <tr>
+      <td><strong>請求金額合計</strong></td>
+      <td><%= @order.total_amount.to_s(:delimited) %>円</td>
+    </tr>
+  </tbody>
+</table>

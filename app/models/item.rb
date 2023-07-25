@@ -1,5 +1,10 @@
 class Item < ApplicationRecord
 
+  has_many :cart_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy
+  has_many :orders, through: :order_item
+  belongs_to :genre
+
   enum status: {
     販売中: true,
     売り切れ: false
@@ -28,11 +33,6 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
-  has_many :cart_items, dependent: :destroy
-  has_many :order_items, dependent: :destroy
-  belongs_to :genre
-  has_many :orders, through: :order_items
-
   with_options presence: true do
     validates :name, presence: true
     validates :introduction, presence: true
@@ -40,9 +40,3 @@ class Item < ApplicationRecord
     validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
     # validates :image
   end
-
-  def get_item_image
-    (image.attached?) ? image : 'no_image.jpg'
-  end
-
-end

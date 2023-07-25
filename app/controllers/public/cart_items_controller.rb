@@ -1,4 +1,5 @@
 class Public::CartItemsController < ApplicationController
+  
   before_action :authenticate_customer!
 
   def index
@@ -35,9 +36,13 @@ class Public::CartItemsController < ApplicationController
 
   def update
     @cart_item = current_customer.cart_items.find(params[:id])
-    @cart_item.update(cart_item_params)
-    @cart_items = current_customer.cart_items.all
-    @total_amount = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    if @cart_item.update(cart_item_params)
+      # 数量が正しく更新された場合の処理
+      redirect_to cart_items_path, notice: '数量を変更しました'
+    else
+      # 数量の更新が失敗した場合の処理
+      redirect_to request.referer, alert: '数量の変更に失敗しました'
+    end
   end
 
   #一つの商品を削除

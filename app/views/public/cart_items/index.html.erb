@@ -36,7 +36,7 @@
               <%= form_with model: cart_item, url: cart_item_path(cart_item), method: :patch do |f| %>
                 <%= f.hidden_field :customer_id, value: current_customer.id %>
                 <%= f.hidden_field :item_id, value: cart_item.item.id %>
-                <!--数量変更-->
+                <!-- 数量変更 -->
                 <%= f.select :quantity, (1..50).to_a, {} %>
                 <%= f.submit "変更" %>
               <% end %>
