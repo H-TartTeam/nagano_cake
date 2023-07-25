@@ -2,8 +2,7 @@ Rails.application.routes.draw do
  namespace :public do
     get 'genres/show'
   end
-  
- 
+
 devise_for :customers,skip: [:passwords], controllers: {
  registrations: "public/registrations",
  sessions: 'public/sessions'
@@ -48,7 +47,6 @@ namespace :admin do
         delete 'clear'
       end
     end
- resources :genres, only: [:show]
- end
- end
-
+    resources :genres, only: [:show]
+  end
+end

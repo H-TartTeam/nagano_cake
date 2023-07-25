@@ -51,7 +51,7 @@ class Public::OrdersController < ApplicationController
           #IDから名前を取り出して入れる
           @order.name = @address.name
           #IDから郵便番号を取り出して入れる
-          @order.postcode = @address.postalcode
+          @order.postcode = @address.postcode #postcodeに修正
           #IDkら住所を取り出して入れる
           @order.address = @address.address
         else
@@ -100,7 +100,7 @@ class Public::OrdersController < ApplicationController
         @order_item.price = cart_item.item.price
         #注文確定された数量データを格納
         @order_item.quantity = cart_item.quantity
-        @order_item.save
+        @order_item.save!
       end
       # 注文が完了したらカートを空にして、注文完了画面にリダイレクトする
       current_customer.cart_items.destroy_all
@@ -124,6 +124,7 @@ class Public::OrdersController < ApplicationController
 
   # 注文詳細画面を表示するアクション
   def show
+    @order = Order.find(params[:id])
   end
 
   private
