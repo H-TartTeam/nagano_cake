@@ -1,21 +1,22 @@
 <div class="container">
-  <h4 class="col-3 text-center" style="background-color: pink; border-radius: 10px;">商品一覧 (全<%= @items.count %>件)</h4>
+ <h4 class="col-3 text-center" style="background-color: pink; border-radius: 10px;">商品一覧 (全<%= @items.count %>件)</h4>
   <%= render 'genre_search', genres: @genres %>
-  <br>
-  <div class="d-flex flex-wrap">
-    <% @items.each do |item| %>
-      <div class="col-md-3">
-        <div class="card">
-          <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
-            <%= link_to item_path(item.id) do %>
-              <%= image_tag item.get_item_image, size: "248x200" %>
-              <%= item.name %><br>
-              ¥<%= (item.price * 1.1).round %>
-            <% end %>
-          </div>
-        </div>
+   <br>
+   <div class="d-flex flex-wrap">
+     <% @items.each do |item| %>
+     <div class="col-md-3">
+      <div class="card">
+      <div class="col-xs-3" style="padding-right: 0px; padding-left: 0px;">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_item_image, size: "248x200" %>
+            <%= item.name %><br>
+            ¥<%= (item.price * 1.1).round %>
+           <% end %>
+         </div>
       </div>
-    <% end %>
-  </div>
-  <%= paginate @items %>
-</div>
+      </div>
+     <% end %>
+   </div>
+   <%= paginate @items %>
+ </div>
+  

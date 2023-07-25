@@ -1,15 +1,19 @@
-<<div class="container">
+<div class="container">
+
   <h2>注文履歴詳細</h2>
   <div class="row">
     <div class="col-md-8">
+
       <h4 class="col-5 text-center" style="background-color:lightgray">注文情報</h4>
       <table class="table table-bordered table-condensed">
         <tbody>
           <tr>
+
             <td>注文日</td>
             <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
           </tr>
           <tr>
+
             <td>配送先</td>
             <td>
               〒<%= @order.postcode %><br>
@@ -18,12 +22,14 @@
             </td>
           </tr>
           <tr>
+
             <td>支払方法</td>
             <td><%= @order.payment_method_i18n %></td>
           </tr>
           <tr>
+
             <td>ステータス</td>
-            <td><%= @order.status %></td>
+            <td><%= @order.status_i18n %></td>
           </tr>
         </tbody>
       </table>
