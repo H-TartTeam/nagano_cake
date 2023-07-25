@@ -1,56 +1,56 @@
-<div class = "container o-8column">
-  <div class = "row">
-    <div class = "col-lg-7">
+<div class="container o-8column">
+  <div class="row">
+    <div class="col-lg-7">
 
-      <div class = "row">
-        <h4 class = "col-4 text-center">会員情報編集</h4>
+      <div class="row">
+        <h4 class="col-4 text-center">会員情報編集</h4>
       </div>
       <%= form_with model: @customer, url: customers_infomation_path do |f| %>
-      <table class = "table table-borderless">
+        <table class="table table-borderless">
 
-        <tbody>
-          <tr class = "row">
-            <td class = "col-2">氏名</td>
-            <td class = "col-4"><%= f.text_field :last_name, autofocus: true, id:"inputName" %></td>
-            <td class = "col-4"><%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
-          </tr>
-          <tr class = "row">
-            <td class = "col-2">フリガナ</td>
-            <td class = "col-4"><%= f.text_field :last_kana_name, autofocus: true, id:"inputName" %></td>
-            <td class = "col-4"><%= f.text_field :first_kana_name, autofocus: true, id:"inputName" %></td>
-          </tr class = "row">
-          <tr class = "row">
-            <td class = "col-2">郵便番号</td>
-            <td class = "col-3"><%= f.text_field :postcode, autofocus: true, id:"inputName" %></td>
-            <td class = "col-3"></td>
-          </tr>
-          <tr class = "row">
-            <td class = "col-2">住所</td>
-            <td class = "col-3"><%= f.text_field :address, autofocus: true, id:"inputName", :size => "46" %></td>
-            <td class = "col-3"></td>
-          </tr>
-          <tr class = "row">
-            <td class = "col-2">電話番号</td>
-            <td class = "col-3"><%= f.text_field :phone_number, autofocus: true, id:"inputName" %></td>
-            <td class = "col-3"></td>
-          </tr>
-          <tr class = "row">
-            <td class = "col-2">メール</td>
-            <td class = "col-3"><%= f.text_field :email, autofocus: true, id:"inputName" %></td>
-            <td class = "col-3"></td>
-          </tr>
-          <tr class = "row">
-            <td class = "col-2"></td>
-            <td class = "col-4">
-               <div class="form-group">
-                 <%= f.submit "編集内容を保存", class: "btn btn-success" %>
-               </div>
-            </td>
-             <td><%= link_to "退会する", customers_confirm_withdraw_path(@customer), class:"btn btn-danger" %></td>
-          </tr>
-        </tbody>
+          <tbody>
+            <tr class="row">
+              <td class="col-2">氏名</td>
+              <td class="col-4"><%= f.text_field :last_name, autofocus: true, id:"inputName" %></td>
+              <td class="col-4"><%= f.text_field :first_name, autofocus: true, id:"inputName" %></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2">フリガナ</td>
+              <td class="col-4"><%= f.text_field :last_kana_name, autofocus: true, id:"inputName" %></td>
+              <td class="col-4"><%= f.text_field :first_kana_name, autofocus: true, id:"inputName" %></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2">郵便番号</td>
+              <td class="col-3"><%= f.text_field :postcode, autofocus: true, id:"inputName" %></td>
+              <td class="col-3"></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2">住所</td>
+              <td class="col-3"><%= f.text_field :address, autofocus: true, id:"inputName", size: "46" %></td>
+              <td class="col-3"></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2">電話番号</td>
+              <td class="col-3"><%= f.text_field :phone_number, autofocus: true, id:"inputName" %></td>
+              <td class="col-3"></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2">メール</td>
+              <td class="col-3"><%= f.text_field :email, autofocus: true, id:"inputName" %></td>
+              <td class="col-3"></td>
+            </tr>
+            <tr class="row">
+              <td class="col-2"></td>
+              <td class="col-4">
+                <div class="form-group">
+                  <%= f.submit "編集内容を保存", class: "btn btn-success" %>
+                </div>
+              </td>
+              <td><%= link_to "退会する", customers_confirm_withdraw_path(@customer), class:"btn btn-danger" %></td>
+            </tr>
+          </tbody>
 
-      </table>
+        </table>
       <% end %>
     </div>
   </div>
