@@ -4,10 +4,10 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
-  
+
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
- sessions: "admin/sessions"
-}
+  sessions: "admin/sessions"
+  }
 
   namespace :admin do
     get "/" => "homes#top"
@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     patch '/customers/infomation' => 'customers#update'
     get 'customers/confirm_withdraw' => 'customers#confirm_withdraw'
     patch '/customers/withdraw' => 'customers#withdraw'
+    #ジャンル検索
+    resources :genres, only: [:show]
     resources :items, only: [:index, :show]
     resource :customers, only: [:new, :create, :show, :edit, :update]
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
@@ -44,7 +46,6 @@ Rails.application.routes.draw do
         delete 'clear'
       end
     end
-    resources :genres, only: [:show]
   end
-  
+
 end
