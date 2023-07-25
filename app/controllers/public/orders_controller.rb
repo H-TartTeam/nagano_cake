@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
       # カートが空でない場合、新しい注文オブジェクトを生成
       @order = Order.new
       # 登録済みの配送先情報を取得し、フォームで選択するためのオブジェクトに割り当て
-      @shopping_address = ShoppingAddress.all
+      @shopping_address = current_customer.shopping_addresses
     else
       # カートが空の場合、エラーメッセージを表示して前のページにリダイレクト
       flash[:notice] = "カートが空です"
