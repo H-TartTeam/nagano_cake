@@ -54,6 +54,7 @@
       </tr>
     </thead>
     <tbody>
+      <!--注文商品のデータを表示-->
       <% @order_items.each do |order_item| %>
         <tr>
           <td><%= order_item.item.name %></td>
@@ -63,6 +64,7 @@
           <td>
             <!-- 製作ステータスの更新フォーム -->
             <%= form_with model: order_item, url: admin_order_item_path(order_item), local: true, method: :patch do |f| %>
+              <!--セレクトを使用する場合はmodelを指定させることが多い。なぜならmodelを記述することによって対応したカラム（縦列）全て持ってくることが可能-->
               <%= f.select :make_status, OrderItem.make_statuses_i18n.invert %>
               <%= f.submit "更新" %>
             <% end %>

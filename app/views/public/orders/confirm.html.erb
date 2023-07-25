@@ -35,6 +35,13 @@
     <%= @order.name %>
   </div>
 
+  <h5>請求金額</h5>
+  <div>
+    <p>商品合計: <%= @total_amount.to_s(:delimited) %>円</p>
+    <p>送料: <%= @order.postage.to_s(:delimited) %>円</p>
+    <p>請求金額: <%= @order.total_amount.to_s(:delimited) %>円</p>
+  </div>
+
   <div>
     <!--Viewページで一時的見ている情報を保存するためにコントローラーに送る-->
     <%= form_with model: @order, url: orders_path, method: :post  do |f| %>
