@@ -2,8 +2,9 @@
 
   <h4>注文履歴一覧</h4>
   <div>
-    <table class="table">
-      <thead>
+  <div class="col-md-10">
+    <table class="table table-bordered table-secondary">
+      <thead style= "thead-dark; font-weight: bold; background:#EAC7C7">
         <tr>
           <th>注文日</th>
           <th>配送先</th>
@@ -13,9 +14,8 @@
           <th>注文詳細</th>
         </tr>
       </thead>
-
-      <% @orders.each do |order| %>
       <tbody>
+      <% @orders.each do |order| %>
         <tr>
           <td><%= order.created_at.strftime('%Y/%m/%d') %></td>
           <td>
@@ -36,4 +36,5 @@
       <% end %>
     </table>
   </div>
+</div>
 </div>

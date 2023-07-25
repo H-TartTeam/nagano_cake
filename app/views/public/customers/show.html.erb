@@ -1,21 +1,16 @@
 <div class = "container o-8column">
-
-
   <div class = "row">
-    <h4 class = "col text-center"><%= @customer.last_name+@customer.first_name %>さんのマイページ</h4>
+    <h4 class = "col-5 text-center"><%= @customer.last_name+@customer.first_name %>さんのマイページ</h4>
   </div>
-
 
   <table class = "table table-borderless">
     <tr class = "row">
        <td calss = "col-2"><strong>登録情報</strong></td>
-       <td calss = "col-4"><%= link_to "編集する", customers_infomation_edit_path, class:"btn btn-success ml-3" %></td>
-     </tr>
+       <td calss = "col-4"><%= link_to "編集する", customers_infomation_edit_path, class:"btn btn-secondary" %></td>
+    </tr>
   </table>
 
-
-
-   <table class = "table table-border-dark" style = "width: 60%;">
+   <table class = "table table-border-dark">
      <tbody>
        <tr class = "row">
         <td class = "col-4">名前</td>
@@ -47,13 +42,12 @@
   <table class = "table table-borderless" style = "width: 60%;">
     <tr class = "row ml-2 mt-4">
       <th class = "col-3">配送先一覧</th>
-      <td><%= link_to '一覧を見る', addresses_path, class: "btn btn-primary" %></td>
+      <td><%= link_to '一覧を見る', addresses_path, class: "btn btn-secondary" %></td>
     </tr>
     <tr class = "row ml-2">
       <th class = "col-3">注文履歴一覧</th>
-      <td><%= link_to '一覧を見る', orders_path(@customer), class: "btn btn-primary" %></td>
+      <td><%= link_to '一覧を見る', orders_path(@customer), class: "btn btn-secondary" %></td>
     </tr>
    </table>
-</div>
 </div>
 

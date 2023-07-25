@@ -1,9 +1,9 @@
 <div class="container">
-  <h2 class = "col-3 text-center" style = "background-color:lightgray">注文情報確認</h2>
+  <h2 class = "col-3 text-center">注文情報確認</h2>
     <div class = "row">
         <div class = "col-10">
-          <table class = "table table-hover table-bordered">
-             <thead class = "thead-light">
+          <table class = "table table-bordered table-secondary">
+             <thead class = "color: #FFF; font-weight: bold; background:#EAC7C7;">
               <tr>
                 <th>商品名</th>
                 <th>単価（税込）</th>
@@ -69,7 +69,7 @@
         <div class="row py-3">
           <td class="col-12 text-center">
             <td>
-            <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }, class: 'btn btn-success btn-lg' %>
+            <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }, class: 'btn btn btn-secondary btn-lg' %>
             </td>
           </td>
         </div>

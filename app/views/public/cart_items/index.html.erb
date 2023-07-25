@@ -1,25 +1,25 @@
   <div>
     <!--カートが空かどうか判断するIF-->
     <% if @cart_items.blank? %>
-      <h3>カート内に商品はございません</h3>
+      <h3 class="col text-center">カート内に商品はございません</h3>
     </div>
   <!--カートに商品が入っていた場合-->
   <% else %>
      <div class="container">
       <div class= "row py-3 px-5">
     <div class= "text-start design">
-      <h2 style= "background-color:#D5B4B4">ショッピングカート</h2>
+      <h2>ショッピングカート</h2>
       </div>
     <div class= "ml-auto">
-      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-secondary", style: "background-color: #dc8ba7;" %>
+      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-secondary" %>
     </div>
   </div>
 
     <div class= "container">
   <div class= "row">
     <div class= "col-12 text-start">
-      <table class= "table table-bordered">
-        <thead style= "color: #FFF; font-weight: bold; background:#D5B4B4;">
+      <table class= "table table-bordered table-secondary">
+        <thead style= "color: #FFF; font-weight: bold; background:#EAC7C7;">
           <th>商品名</th>
           <th>単価(税込)</th>
           <th>数量</th>
@@ -42,19 +42,19 @@
               <% end %>
             </td>
             <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
-            <td><%= link_to '削除', cart_item_path(cart_item), method: :delete,  class: "btn btn-secondary", style: "background-color: #dc8ba7;", data: { confirm: "本当に削除しますか？" } %></td>
+            <td><%= link_to '削除', cart_item_path(cart_item), method: :delete,  class: "btn btn-secondary", data: { confirm: "本当に削除しますか？" } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <div><%= link_to '買い物を続ける', items_path , class: "btn btn-secondary", style: "background-color: #dc8ba7;" %></div>
+    <div><%= link_to '買い物を続ける', items_path , class: "btn btn-secondary" %></div>
     <table>
       <tbody>
         <tr>
-      <table class= "table ml-auto table-bordered col-3" >
+      <table class= "table ml-auto table-bordered col-3 table-secondary" >
         <tbody>
-          <th style= "color: #FFF; font-weight: bold; background:#D5B4B4;">合計金額</th>
+          <th style= " font-weight: bold; background:#EAC7C7;">合計金額</th>
           <td><%= @total_amount.to_s(:delimited) %>円</td>
         </tr>
       </tbody>
@@ -63,7 +63,7 @@
   <div class= "row py-3">
     <div class="col-12 text-center">
       <div>
-        <button class="btn btn-lg custom-button"><%= link_to '情報入力へ進む', new_order_path, class: "btn btn-secondary", style: "background-color: #dc8ba7;" %></button>
+        <button class="btn btn-lg custom-button"><%= link_to '情報入力へ進む', new_order_path, class: "btn btn-secondary"%></button>
       </div>
   <% end %>
 
