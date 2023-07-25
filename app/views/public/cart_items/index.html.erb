@@ -11,7 +11,7 @@
       <h2 style= "background-color:#D5B4B4">ショッピングカート</h2>
       </div>
     <div class= "ml-auto">
-      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-outline-danger" %>
+      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-secondary", style: "background-color: #dc8ba7;" %>
     </div>
   </div>
 
@@ -42,13 +42,13 @@
               <% end %>
             </td>
             <td><%= cart_item.subtotal.to_s(:delimited) %>円</td>
-            <td><%= link_to '削除', cart_item_path(cart_item), method: :delete, class: "btn btn-outline-danger", data: { confirm: "本当に削除しますか？" } %></td>
+            <td><%= link_to '削除', cart_item_path(cart_item), method: :delete,  class: "btn btn-secondary", style: "background-color: #dc8ba7;", data: { confirm: "本当に削除しますか？" } %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <div><%= link_to '買い物を続ける', items_path , class: "btn btn-outline-dark" %></div>
+    <div><%= link_to '買い物を続ける', items_path , class: "btn btn-secondary", style: "background-color: #dc8ba7;" %></div>
     <table>
       <tbody>
         <tr>
@@ -63,7 +63,7 @@
   <div class= "row py-3">
     <div class="col-12 text-center">
       <div>
-        <button class="btn btn-lg custom-button"><%= link_to '情報入力へ進む', new_order_path, class: "btn btn-success btn-lg" %></button>
+        <button class="btn btn-lg custom-button"><%= link_to '情報入力へ進む', new_order_path, class: "btn btn-secondary", style: "background-color: #dc8ba7;" %></button>
       </div>
   <% end %>
 

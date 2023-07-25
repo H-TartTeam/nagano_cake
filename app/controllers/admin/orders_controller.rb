@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to request.referer # 前のページにリダイレクトする
   end
-  
+
   def index
     @orders = Order.all
 
@@ -28,5 +28,5 @@ class Admin::OrdersController < ApplicationController
   # ストロングパラメーターの定義
   def order_params
     params.require(:order).permit(:status) # 注文のステータスを更新する際に許可するパラメーターを指定
-
+  end
 end

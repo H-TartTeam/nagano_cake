@@ -12,6 +12,7 @@ class Order < ApplicationRecord
   #名前を氏＋名を合わせて氏名で表示できるようにした
   def full_name
     "#{last_name} #{first_name}"
+  end
 
   def full_name
     self.customer.last_name + " " + self.customer.first_name
