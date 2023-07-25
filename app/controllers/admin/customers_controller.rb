@@ -1,4 +1,5 @@
 class Admin::CustomersController < ApplicationController
+
   def index
     #customer = Customer.find(params[:id])
     #page(params[:page])ページネーション
@@ -22,6 +23,8 @@ class Admin::CustomersController < ApplicationController
       render 'edit'
     end
   end
+
+  private
 
   def customer_params
     params.require(:customer).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :email, :address, :phone_number, :is_deleted)
