@@ -15,6 +15,7 @@
         <thead>
           <tr>
             <th> 商品ID </th>
+            <th> </th>
             <th> 商品名 </th>
             <th> 税抜価格 </th>
             <th> ジャンル </th>
@@ -27,9 +28,13 @@
               <td class="align-middle"><%= item.id %></td>
               <td class="align-middle">
                 <%= link_to admin_item_path(item.id) do %>
-                  <%= image_tag item.get_item_image, size: "248x200" %>
-                  <u><%= item.name %></u>
+                  <%= image_tag item.get_item_image, size: "75x50" %>
                 <% end %>
+              </td>
+              <td class="text-success font-weight-bold" style="font-size: 20px;">
+                <%= link_to admin_item_path(item.id) do %>
+              <%= item.name %>
+              <% end %>
               </td>
               <td class="align-middle"><%= item.price %></td>
               <td class="align-middle"><%= item.genre.name %></td>
@@ -45,7 +50,9 @@
         <% end %>
       </table>
       
-      <%= paginate @items %>
+      <div class="all-items-show-button d-flex justify-content-center"> 
+    <%= paginate @items %>
+  </div>
 
     </div>
   </div>

@@ -4,31 +4,27 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-sm-20 px-sm-0 mx-auto mb-5">
+      <% if @item.image.attached? %>
+        <%= image_tag @item.image, style: "max-width: 700px;" %>
+      <% else %>
+          No image available
+      <% end %>
+       <h2><%= @item.name %>♡</h2>
+      <table>
+          <tr>
+          <td>商品説明</td>
+          <td><%= @item.introduction %></td>
+        </tr>
+        <tr>
+          <td>ジャンル</td>
+          <td><%= @item.genre.name %></td>
+        </tr>
+        <tr>
+          <td>税込価格</td>
+          <td><%= @item.taxin_price.to_s(:delimited) %>円</td>
+        </tr>
+        <tr>
 
-    <% if @item.image.attached? %>
-      <%= image_tag @item.image, style: "max-width: 700px;" %>
-    <% else %>
-      No image available
-    <% end %>
-
-    <h2><%= @item.name %></h2>
-    <table>
-      <tr>
-        <td>商品説明</td>
-        <td><%= @item.introduction %></td>
-      </tr>
-      <tr>
-        <td>ジャンル</td>
-        <td><%= @item.genre.name %></td>
-      </tr>
-      <tr>
-        <td>税込価格</td>
-        <td><%= @item.taxin_price.to_s(:delimited) %>円</td>
-      </tr>
-      <tr>
-        <td>
           <% if @item.is_available == true %>
             <%= form_with(model: @cart_item, url: cart_items_path, method: :post, local: true) do |f| %>
               <%= f.label :quantity, "個数選択" %>

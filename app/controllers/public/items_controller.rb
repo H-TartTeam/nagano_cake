@@ -8,7 +8,6 @@ class Public::ItemsController < ApplicationController
   @cart_item = CartItem.new
  end
 
-
  def genre_search
   @genre = Genre.find(params[:id])
   @items = @genre.items.order(created_at: :DESC)

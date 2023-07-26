@@ -1,20 +1,18 @@
-<div class="plate mx-auto" id="cork"></div>
-<div class="home-box mx-auto my-3">
-  <p class="home-text">ようこそ、ながのCAKEへ！<br>
-  このサイトは、ケーキ販売のECサイトになります。
-  会員でない方も商品の閲覧はできますが、<br>
-  購入には会員登録が必要になります。
-  </p>
-
-  <div class="content-container">
+<div class="plate mx-auto" id="cork">
+  </div>
+<div class="home-box mx-auto my-3 text-center">
+    <p class="home-text">
+      <%= image_tag "welcome.jpg", size: "1000x360"%><br>
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+    </p>
+    
+<div class="content-container">
     <%= render 'public/items/genre_search', genres: @genres %>
-    <style>
-      .slide {
-        position: relative; /* 親要素に対して相対位置を指定 */
-        width: 100%;
-        height: 600px; /* 必要な高さを指定 */
-        overflow: hidden; /* 高さを超える部分を隠す */
-      }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
 
       .slide-item {
         position: absolute; /* 要素の位置を絶対位置で指定 */
@@ -47,31 +45,32 @@
       });
     </script>
 
-    <div class="slide">
-      <div class="slide-item">
-        <%= image_tag "shortcake.jpg", class: "slide-img" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "cakeshop.jpg", class: "slide-img" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "crepescake.jpg", class: "slide-img" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "cupcakes.jpg", class: "slide-img" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "brownie.jpg", class: "slide-img" %>
-      </div>
-    </div>
+<div class="slide">
+  
+  <div class="slide-item">
+    <%= image_tag "shortcake.jpg", class: "slide-img", width: "1000", height: "600" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "cakeshop.jpg", class: "slide-img", width: "1000", height: "600" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "crepescake.jpg", class: "slide-img", width: "1000", height: "600" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "cupcakes.jpg", class: "slide-img", width: "1000", height: "600" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "brownie.jpg", class: "slide-img", width: "1000", height: "600" %>
   </div>
 </div>
+</div>
+</div>
 
-<div class="container new-item">
   <h2>新着商品</h2>
-  <ul>
+
+  <ul class="new-item text-center">
     <% @items.each do |item| %>
-      <li>
+      <li class="item">
         <%= link_to item_path(item) do %>
           <%= image_tag item.get_item_image, size: "300x200" %>
           <h3><%= item.name %></h3> <!-- 商品の名前を表示 -->
