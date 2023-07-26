@@ -21,5 +21,4 @@ class Order < ApplicationRecord
   def full_name_kana
    self.customer.last_name_kana + " " + self.customer.first_name_kana
   end
-
 end

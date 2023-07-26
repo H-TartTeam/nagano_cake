@@ -14,18 +14,18 @@
             </tr>
           </thead>
 
-          <% @orders.each do |order| %>
-          <tbody>
-            <tr>
-              <td><%= link_to order.created_at.strftime('%Y/%m/%d'), admin_order_path(order) %></td>
-              <td><%= order.full_name %> 様</td>
-              <td><%= order.order_items.sum(:quantity) %>個</td>
-              <td><%= order.status %></td>
-            </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
+        <% @orders.each do |orders| %>
+        <tbody>
+          <tr>
+            <td><%= link_to orders.created_at.strftime('%Y/%m/%d'), admin_order_path(orders) %></td>
+            <td><%= orders.full_name %> 様</td>
+            <td><%= orders.order_items.sum(:quantity) %>個</td>
+            <td><%= orders.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
     </div>
   </div>
 
