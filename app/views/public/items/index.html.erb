@@ -1,5 +1,5 @@
 <div class="container">
- <h4 class="col-3 text-center" style="background-color: pink; border-radius: 10px;">商品一覧 (全<%= @items.count %>件)</h4>
+ <h4 class="col-3 text-center" style="background-color: pink; border-radius: 10px;">商品一覧 (全<%= Item.count %>件)</h4>
   <%= render 'genre_search', genres: @genres %>
    <br>
    <div class="d-flex flex-wrap">
@@ -10,7 +10,7 @@
           <%= link_to item_path(item.id) do %>
             <%= image_tag item.get_item_image, size: "248x200" %>
             <%= item.name %><br>
-            ¥<%= (item.price * 1.1).round %>
+            <%= item.taxin_price.to_s(:delimited) %>円
            <% end %>
          </div>
       </div>
@@ -19,4 +19,3 @@
    </div>
    <%= paginate @items %>
  </div>
-  
