@@ -26,6 +26,7 @@
                 </tbody>
           </table>
         </div>
+         </div>
 
 
       <div class = "row">
@@ -47,14 +48,19 @@
         </table>
       </div>
 
-  <h5>請求金額</h5>
-  <div>
-    <p>商品合計: <%= @total_amount.to_s(:delimited) %>円</p>
-    <p>送料: <%= @order.postage.to_s(:delimited) %>円</p>
-    <p>請求金額: <%= @order.total_amount.to_s(:delimited) %>円</p>
-  </div>
+<div class="row">
+  <div class="col-md-4">
+    <h4 class = "col-5 text-center" style = "background-color:lightgray">請求金額</h4>
+      <table class="table table-bordered table-condensed">
+        <tbody>
+          <tr>
+            <td>商品合計: <%= @total_amount.to_s(:delimited) %>円</td>
+            <td>送料: <%= @order.postage.to_s(:delimited) %>円</td>
+            <td>請求金額: <%= @order.total_amount.to_s(:delimited) %>円</td>
+          </tr>
+        </tbody>
+      </table>
 
-  <div>
 
     <!--Viewページで一時的見ている情報を保存するためにコントローラーに送る-->
     <%= form_with model: @order, url: orders_path, method: :post  do |f| %>
@@ -65,13 +71,11 @@
       <%= f.hidden_field :postage, :value => @order.postage %>
       <%= f.hidden_field :total_amount, :value => @order.total_amount %>
       <%= f.hidden_field :payment_method, :value => @order.payment_method %>
+
+ <div class = "col text-center">
+  <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }, class: 'btn btn btn-secondary' %>
 </div>
-        <div class="row py-3">
-          <td class="col-12 text-center">
-            <td>
-            <%= f.submit '注文を確定する', data: { confirm: "注文確定をします よろしいですか？" }, class: 'btn btn btn-secondary btn-lg' %>
-            </td>
-          </td>
-        </div>
+
+
     <% end %>
 

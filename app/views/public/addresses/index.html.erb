@@ -1,11 +1,13 @@
-<div class="container">
-  <div class="col-md-3">
-    <h4 class = "text-center">配送先登録 / 一覧</h4>
-  </div>
+<div class = "container">
+  <div class = "row" style = "margin: 10px;">
+    <div class = "col text-center">
+      <h3 class = "col-4 text-center">配送先登録 / 一覧</h3>
+
   <div class="row">
     <div class="col-md-10">
     <%= form_with url:addresses_path, model: @shopping_address_new, local:true do |f| %>
       <table class="table table-borderless">
+        <tbody>
         <tr>
           <td>郵便番号(ハイフンなし)</td>
           <td><%= f.text_field :postcode, autofocus: true %></td>
@@ -19,10 +21,12 @@
           <td><%= f.text_field :name %></td>
           <td><%= f.submit "新規登録", class: "btn btn-secondary px-5" %></td>
         </tr>
+        </tbody>
       </table>
     <% end %>
     </div>
   </div>
+
   <div class="col-md-10">
             <table class="table table-bordered table-secondary">
               <thead style= "thead-dark; font-weight: bold; background:#EAC7C7">
@@ -48,9 +52,5 @@
           </table>
     </div>
 </div>
+</div>
 
-<style>
-  .custom-button-group .btn {
-    margin-right: 20px;
-  }
-</style>
