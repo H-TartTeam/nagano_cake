@@ -4,7 +4,7 @@ class Public::ItemsController < ApplicationController
   @item = Item.find(params[:id])
   # @image = @item.image
   @genres = Genre.all
-  @genre = Genre.find(params[:id])
+  #@genre = Genre.find(params[:id])
   @cart_item = CartItem.new
  end
 
@@ -15,7 +15,7 @@ class Public::ItemsController < ApplicationController
 
 
  def index
-  @items = Item.page(params[:page]).per(10)
+  @items = Item.page(params[:page]).per(12)
   @genres = Genre.all
  end
 
