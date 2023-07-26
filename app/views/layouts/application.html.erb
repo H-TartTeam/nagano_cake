@@ -23,6 +23,40 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ml-auto">
+          
+           <!--adminログイン時のヘッダー-->
+            <% if admin_signed_in? %>
+              <li class="nav-item">
+                <%= link_to admin_items_path do %>
+                  <i class="fa-solid fa-cake-candles">商品一覧</i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_customers_path do %>
+                  <i class="fas fa-users">会員一覧</i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_path  do %>
+                  <i class="fas fa-clipboard-list">注文履歴一覧</i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to admin_genres_path do%>
+                  <i class="fas fa-tags">ジャンル一覧</i>
+                <% end %>
+              </li>
+              <li class="nav-item">
+                <%= link_to destroy_admin_session_path, method: :delete do %>
+                  <i class="fas fa-sign-out-alt">ログアウト</i>
+                <% end %>
+              </li>
+              <li class="search"@query >
+                 <%= form_with(url: search_path, scope: :post, local: true) do |f| %>
+                 <%= f.text_field :search, placeholder: "キーワード検索" %>
+                 <% f.submit %>
+                 <% end %>
+              </li>
 
           <!--customersログイン時のヘッダー-->
           <% elsif customer_signed_in? %>
