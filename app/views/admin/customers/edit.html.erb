@@ -1,10 +1,10 @@
-<main>
+<div class="d-flex justify-content-center"> <!-- main要素を中央寄せするためのdiv -->
+  <div>
+    <h4><%= @customer.full_name %>会員情報編集</h4>
 
-   <h4><%= @customer.full_name %>会員情報編集</h4>
-
-   <%= form_for @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
-    <table>
-      <tbody>
+    <%= form_for @customer, url: admin_customer_path(@customer), method: :patch do |f| %>
+      <table class="table">
+        <tbody>
         <tr>
           <th>氏名</th>
           <th><%= f.text_field :last_name %></th>
@@ -38,9 +38,9 @@
             <%= f.label :is_deleted, '退会' %>
           </th>
         </tr>
-      </tbody>
-    </table>
-    <%= f.submit '変更を保存' %>
-  <% end %>
-
-</main>
+     </tbody>
+      </table>
+      <%= f.submit '変更を保存', class: 'btn btn-secondary' %> <!-- Bootstrapのボタンスタイルを適用 -->
+    <% end %>
+  </div>
+</div>
