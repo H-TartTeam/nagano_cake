@@ -29,4 +29,5 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status) # 注文のステータスを更新する際に許可するパラメーターを指定
   end
+
 end

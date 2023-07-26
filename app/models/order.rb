@@ -6,7 +6,6 @@ class Order < ApplicationRecord
 
   has_one :shopping_address
   has_many :order_items
-
   belongs_to :customer
 
   #名前を氏＋名を合わせて氏名で表示できるようにした

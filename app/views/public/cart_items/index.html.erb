@@ -1,19 +1,19 @@
   <div>
-    <!--カートが空かどうか判断するIF-->
-    <% if @cart_items.blank? %>
-      <h3 class="col text-center">カート内に商品はございません</h3>
-    </div>
-  <!--カートに商品が入っていた場合-->
-  <% else %>
-     <div class="container">
-      <div class= "row py-3 px-5">
-    <div class= "text-start design">
-      <h2>ショッピングカート</h2>
-      </div>
-    <div class= "ml-auto">
-      <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-secondary" %>
-    </div>
+  <!--カートが空かどうか判断するIF-->
+  <% if @cart_items.blank? %>
+    <h3>カート内に商品はございません</h3>
   </div>
+<!--カートに商品が入っていた場合-->
+<% else %>
+  <div class="container">
+    <div class="row py-3 px-5">
+      <div class="text-start design">
+        <h2 style="background-color:#D5B4B4">ショッピングカート</h2>
+      </div>
+      <div class="ml-auto">
+        <%= link_to 'カートを空にする', clear_cart_items_path, method: :delete, class: "btn btn-outline-danger" %>
+      </div>
+    </div>
 
     <div class= "container">
   <div class= "row">
@@ -67,5 +67,6 @@
       </div>
       </div>
       </div>
+    </div>
   <% end %>
-
+</div>
