@@ -5,11 +5,6 @@ class Item < ApplicationRecord
   has_many :orders, through: :order_item
   belongs_to :genre
 
-  enum status: {
-    販売中: true,
-    売り切れ: false
-  }
-
   # カート内の数量を取得するメソッド
   def cart_item_quantity(customer)
     cart_item = customer.cart_items.find_by(item_id: self.id)
@@ -36,9 +31,8 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name, presence: true
     validates :introduction, presence: true
-    validates :is_available, presence: true
     validates :price, presence: true, numericality: { only_integer: true, greater_than: 0 }
     # validates :image
   end
-  
+
 end
