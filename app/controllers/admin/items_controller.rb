@@ -4,7 +4,8 @@ class Admin::ItemsController < ApplicationController
   before_action :set_product, only: %i[show edit update]
 
     def index
-       @items = Item.page(params[:page]).per(10)
+       @items = Item.all.page(params[:page]).per(10)
+       @genre = Genre.all
     end
 
   def new
