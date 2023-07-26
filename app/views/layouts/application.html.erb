@@ -17,7 +17,7 @@
 <body>
   <header>
     <nav class="navbar navbar-expand-lg navbar-light">
-      <!--a class="navbar-brand" href="/">%= image_tag "", :size => "240x50" %></a>-->
+      <a class="navbar-brand" href="/"><%= image_tag "logo2.jpg", :size => "120x120" %></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -50,12 +50,6 @@
                 <%= link_to destroy_admin_session_path, method: :delete do %>
                   <i class="fas fa-sign-out-alt">ログアウト</i>
                 <% end %>
-              </li>
-              <li class="search"@query >
-                 <%= form_with(url: search_path, scope: :post, local: true) do |f| %>
-                 <%= f.text_field :search, placeholder: "キーワード検索" %>
-                 <% f.submit %>
-                 <% end %>
               </li>
 
           <!--customersログイン時のヘッダー-->
@@ -110,21 +104,20 @@
                 <i class="fa-solid fa-right-to-bracket">ログイン</i>
               <% end %>
             </li>
-            <li class="search" @query>
-              <%= form_with(url: search_path, scope: :post, local: true) do |f| %>
-                <%= f.text_field :search, placeholder: "キーワード検索" %>
-                <% f.submit %>
-              <% end %>
-            </li>
           <% end %>
-
+         
         </ul>
       </div>
     </nav>
+    <div class="search @query text-right" >
+                 <%= form_with(url: search_path, scope: :post, local: true) do |f| %>
+                 <%= f.text_field :search, placeholder: "キーワード検索" %>
+                 <% f.submit %>
+                 <% end %>
+    </div>
+    
   </header>
-  <div class="container">
-    <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
-      <br><br><br>
+  
       <main>
         <%= yield %>
       </main>
