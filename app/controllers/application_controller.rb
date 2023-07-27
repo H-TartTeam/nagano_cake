@@ -1,8 +1,7 @@
 class ApplicationController < ActionController::Base
+  before_action :search_box_setup
 
-  before_action :search
-
-  def search
+  def search_box_setup
     @q = Item.ransack(params[:q])
     @item = @q.result(distinct: true)
     @result = params[:q]&.values&.reject(&:blank?)

@@ -6,7 +6,7 @@
     このサイトは、ケーキ販売のECサイトになります。<br>
     会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
   </p>
-
+  
   <div class="content-container container">
     <div class="genre_search">
       <%= render 'public/items/genre_search', genres: @genres %>
@@ -32,6 +32,9 @@
     </script>
 
     <div class="slide">
+      <div class="genre_search ml-5">
+        <%= render 'public/items/genre_search', genres: @genres %>
+      </div>
       <div class="slide-item">
         <%= image_tag "shortcake.jpg", class: "slide-img", width: "1000", height: "600" %>
       </div>

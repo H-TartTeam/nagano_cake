@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "/" => "homes#top"
+    get "search" => "searches#search"
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :edit, :create, :update]
     resources :items, only: [:index, :show, :edit, :create, :update, :new]
@@ -31,7 +32,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resource :customers, only: [:new, :create, :show, :edit, :update]
     resources :addresses, only: [:new, :index, :create, :edit, :update, :destroy]
-    post "search" => "searches#search"
+    #検索
+    get "search" => "searches#search"
     # orders
     resources :orders, only: [:new, :create, :index, :show] do
       # データ全体に行いたいのでcollection
