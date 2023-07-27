@@ -54,7 +54,7 @@
 
           <!--customersログイン時のヘッダー-->
           <% elsif customer_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-link">
               ようこそ <%= link_to customers_path do %>
               <strong><%= current_customer.last_name %><%= current_customer.first_name %></strong>
               <% end %>
@@ -109,11 +109,13 @@
         </ul>
       </div>
     </nav>
+
     <div class="search @query text-right" >
-                 <%= form_with(url: search_path, scope: :post, local: true) do |f| %>
-                 <%= f.text_field :search, placeholder: "キーワード検索" %>
-                 <% f.submit %>
-                 <% end %>
+      <%= search_form_for @q, url: search_path, scope: :post, local: true do |f| %>
+        <!--name_con t= nameカラムの部分一致/name_eq = nameカラムの完全一致-->
+        <%= f.search_field :name_cont, placeholder: "キーワード検索" %>
+        <% f.submit %>
+      <% end %>
     </div>
 
   </header>

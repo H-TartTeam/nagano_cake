@@ -15,7 +15,7 @@
  */
 
 
- 
+
  * {
    margin: 0;
    padding: 0;
@@ -23,7 +23,7 @@
    color:#967E76;
    font-family: "ヒラギノ丸ゴ Pro W4","Nunito","Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", sans-serif;
  }
- 
+
 header {
   background-color:#F8E8EE;
   padding: 10px;
@@ -34,7 +34,7 @@ header {
 body{
     background-image: image-url('flower.jpg');
     background-position: center center;
-    background-repeat: repeat;
+    background-repeat: repeat-y;
     background-size: auto;
     padding: 10px;
     margin: 0;

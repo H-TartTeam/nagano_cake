@@ -9,9 +9,6 @@
   </p>
 
   <div class="content-container">
-    <div class="genre_search">
-      <%= render 'public/items/genre_search', genres: @genres %>
-    </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
       $(document).ready(function () {
@@ -33,6 +30,9 @@
     </script>
 
     <div class="slide">
+      <div class="genre_search ml-5">
+        <%= render 'public/items/genre_search', genres: @genres %>
+      </div>
       <div class="slide-item">
         <%= image_tag "shortcake.jpg", class: "slide-img", width: "1000", height: "600" %>
       </div>
