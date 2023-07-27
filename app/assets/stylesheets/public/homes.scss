@@ -2,18 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
 .content-container {
-  display: flex; /* Flexboxを使用して横に並べる */
-  justify-content: space-between; /* 両要素の間隔を広げる */
+  margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
   align-items: flex-start; /* 要素の縦方向の配置を上端に揃える（必要に応じて調整） */
 }
 
+.genre_search{
+  margin: 0;
+}
+
+.genre-list li {
+    white-space: nowrap; 
+}
+
 .slide {
-    margin-left: 1rem; /* 1rem分（1マス分）の下側のマージンを追加 */
+    margin-left: 5px; 
     position: relative; /* 親要素に対して相対位置を指定 */
     width: 100%;
     height: 700px; /* 必要な高さを指定 */
     overflow: hidden; /* 高さを超える部分を隠す */
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
 .slide-item {
