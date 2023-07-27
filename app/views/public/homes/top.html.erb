@@ -1,5 +1,4 @@
 <div class="plate mx-auto" id="cork">
-</div>
 <div class="home-box mx-auto my-3 text-center">
   <p class="home-text">
     <%= image_tag "welcome.jpg", size: "1000x360" %><br>
@@ -8,7 +7,7 @@
     会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
   </p>
 
-  <div class="content-container">
+  <div class="content-container container">
     <div class="genre_search">
       <%= render 'public/items/genre_search', genres: @genres %>
     </div>
@@ -50,6 +49,7 @@
       </div>
     </div>
   </div>
+</div>
 </div>
 
 <div class="container text-center">
