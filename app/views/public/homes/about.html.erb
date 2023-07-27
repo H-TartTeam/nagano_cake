@@ -1,0 +1,53 @@
+<div class="container about-box">
+ <div class="plate mx-auto mb-5" id="cork">
+
+ </div>
+ <div class="center-block text-center">
+  <%= image_tag "about.jpg", size: "750x250"%>
+ </div>
+  
+ <div>
+  <div class="content-container">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  $(document).ready(function() {
+
+    $('.slide-item').hide();
+    $('.slide-item:first').show();
+
+
+    setInterval(function() {
+      var currentSlide = $('.slide-item:visible');
+      var nextSlide = currentSlide.next('.slide-item');
+
+      if (nextSlide.length === 0) {
+        nextSlide = $('.slide-item:first');
+      }
+
+      currentSlide.fadeOut(500);
+      nextSlide.fadeIn(500);
+    }, 3000); // 3秒ごとにスライドを切り替え
+  });
+</script>
+
+
+<div class="slide">
+  <div class="slide-item">
+    <%= image_tag "cakeshop4.jpg", class: "img-fluid slide-img" %>
+  </div>
+  <div class="slide-item">
+    <%= image_tag "cakeshop5.jpg", class: "img-fluid slide-img" %>
+  </div>
+</div>
+</div>
+  
+  <div class="center-block">
+  <p>ながのCAKEは全国発送可能なケーキ屋さんです。<br></p>
+  <p>お子様からお年寄りの方までお召し上がりいただけるよう、様々なバリエーションをご用意しております。<br></p>
+  <p>また、全国へ発送可能ですので「いつ」でも「どこ」でもご注文いただけます。<br></p>
+  <p>ぜひご注文ください。</p>
+  </div
+ </div>
+  
+ <div class="about-img mx-auto"></div>
+</div>
