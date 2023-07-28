@@ -1,66 +1,69 @@
-<div class ="container mt-5">
- <%= flash[:alert] %>
- <div class ="row mt-5">
-<h4 style="background:#EAC7C7;">注文情報入力</h4>
- </div>
-<%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
- <table>
-  <tbody>
-   <tr>
-    <td>
-     <h5>支払方法</h5>
-     <!--Orderモデルに記述した内容を持ってきている。こちらに来る時に複数形に変える-->
-     <!-- クレジットカード支払いのラジオボタン -->
-     <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
-     <!-- :payment_method_credit_cardは上のボタンと関連づけるための名前に変える -->
-     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
-     <!-- 銀行振り込み支払いのラジオボタン -->
-     <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
-     <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:transfer] %>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <!-- お届け先の選択 -->
-     <h5>お届け先</h5>
-     <!-- :select_addressはラジオボタンが同じ名前を持つものをグループ化することで、選択が1つになる-->
-     <!-- ご自身の住所を選択するラジオボタン (enumの0) -->
-     <%= f.radio_button :select_address, 0 %>
-     <%= f.label :address_number_0, "【ご自身の住所】" %>
-     <!-- 現在のユーザーの住所を表示 -->
-     〒<%= current_customer.postcode %><%= current_customer.address %><br>
-     <%= current_customer.last_name %><%= current_customer.first_name %>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <!-- 登録済み住所から選択するラジオボタン -->
-     <%= f.radio_button :select_address, 1 %>
-     <%= f.label :address_number_1, "【登録済み住所から選択】" %>
-     <!-- 登録済みのお届け先アドレスを選択するドロップダウンリスト -->
-     <!-- options_from_collection_for_selectはデータを持ってきて、選択して、送信する場合に使用 -->
-     <!-- @shopping_address, :id, :address -->
-     <%= f.select :address_id, options_from_collection_for_select(@shopping_address, :id, :address) %>
-    </td>
-   </tr>
-   <tr>
-    <td>
-     <!-- 新しいお届け先を選択するラジオボタン -->
-     <%= f.radio_button :select_address, 2 %>
-     <%= f.label :address_number_2, "【新しいお届け先】" %>
-     <!-- 新しいお届け先の郵便番号入力欄 -->
-     <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
-     <%= f.text_field :postcode, placeholder: "0000000" %>
-     <!-- 新しいお届け先の住所入力欄 -->
-     <%= f.label :address, "住所" %>
-     <%= f.text_field :address, placeholder: "長野県伊那市〇〇町" %>
-     <!-- 新しいお届け先の宛名入力欄 -->
-     <%= f.label :name, "宛名" %>
-     <%= f.text_field :name, placeholder: "山田花子" %>
-    </td>
-   </tr>
-  </tbody>
- </table>
- <!-- 注文確認画面に進むためのボタン -->
- <%= f.submit "確認画面へ進む" %>
-<% end %>
+<div class="container mt-5">
+  <%= flash[:alert] %>
+  <div class="row mt-5">
+    <h4 style="background:#EAC7C7;">注文情報入力</h4>
+  </div>
+
+  <%= form_with model: @order, url: confirm_orders_path, method: :post do |f| %>
+    <table>
+      <tbody>
+        <tr>
+          <td>
+            <h5>支払方法</h5>
+            <!--Orderモデルに記述した内容を持ってきている。こちらに来る時に複数形に変える-->
+            <!-- クレジットカード支払いのラジオボタン -->
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
+            <!-- :payment_method_credit_cardは上のボタンと関連づけるための名前に変える -->
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:credit_card] %><br>
+            <!-- 銀行振り込み支払いのラジオボタン -->
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method_credit_card, Order.payment_methods_i18n[:transfer] %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- お届け先の選択 -->
+            <h5>お届け先</h5>
+            <!-- :select_addressはラジオボタンが同じ名前を持つものをグループ化することで、選択が1つになる-->
+            <!-- ご自身の住所を選択するラジオボタン (enumの0) -->
+            <%= f.radio_button :select_address, 0 %>
+            <%= f.label :address_number_0, "【ご自身の住所】" %>
+            <!-- 現在のユーザーの住所を表示 -->
+            〒<%= current_customer.postcode %><%= current_customer.address %><br>
+            <%= current_customer.last_name %><%= current_customer.first_name %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- 登録済み住所から選択するラジオボタン -->
+            <%= f.radio_button :select_address, 1 %>
+            <%= f.label :address_number_1, "【登録済み住所から選択】" %>
+            <!-- 登録済みのお届け先アドレスを選択するドロップダウンリスト -->
+            <!-- options_from_collection_for_selectはデータを持ってきて、選択して、送信する場合に使用 -->
+            <!-- @shopping_address, :id, :address -->
+            <%= f.select :address_id, options_from_collection_for_select(@shopping_address, :id, :address) %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <!-- 新しいお届け先を選択するラジオボタン -->
+            <%= f.radio_button :select_address, 2 %>
+            <%= f.label :address_number_2, "【新しいお届け先】" %>
+            <!-- 新しいお届け先の郵便番号入力欄 -->
+            <%= f.label :postcode, "郵便番号(ハイフンなし)" %>
+            <%= f.text_field :postcode, placeholder: "0000000" %>
+            <!-- 新しいお届け先の住所入力欄 -->
+            <%= f.label :address, "住所" %>
+            <%= f.text_field :address, placeholder: "長野県伊那市〇〇町" %>
+            <!-- 新しいお届け先の宛名入力欄 -->
+            <%= f.label :name, "宛名" %>
+            <%= f.text_field :name, placeholder: "山田花子" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- 注文確認画面に進むためのボタン -->
+    <%= f.submit "確認画面へ進む" %>
+  <% end %>
+</div>
