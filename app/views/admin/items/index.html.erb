@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-10 px-sm-0 offset-sm-1">
-
       <h2>☺︎商品一覧☺︎</h2>
       <%= link_to new_admin_item_path, class: "btn btn--circle btn--circle-c btn--shadow" do %>
         <i class="fas fa-plus"></i>
@@ -33,8 +32,8 @@
               </td>
               <td class="text-success font-weight-bold" style="font-size: 20px;">
                 <%= link_to admin_item_path(item.id) do %>
-              <%= item.name %>
-              <% end %>
+                  <%= item.name %>
+                <% end %>
               </td>
               <td class="align-middle"><%= item.price %></td>
               <td class="align-middle"><%= item.genre.name %></td>
@@ -49,10 +48,10 @@
           </tbody>
         <% end %>
       </table>
-      
-  <div class="all-items-show-button d-flex justify-content-center"> 
-    <%= paginate @items %>
-  </div>
+
+      <div class="all-items-show-button d-flex justify-content-center">
+        <%= paginate @items %>
+      </div>
 
     </div>
   </div>
