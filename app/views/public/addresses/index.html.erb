@@ -1,56 +1,59 @@
-<div class = "container">
-  <div class = "row" style = "margin: 10px;">
-    <div class = "col text-center">
-      <h3 class = "col-4 text-center">配送先登録 / 一覧</h3>
+<div class="container">
+  <div class="row" style="margin: 10px;">
+    <div class="col text-center">
+      <h3 class="col-4 text-center">配送先登録 / 一覧</h3>
 
-  <div class="row">
-    <div class="col-md-10">
-    <%= form_with url:addresses_path, model: @shopping_address_new, local:true do |f| %>
-      <table class="table table-borderless">
-        <tbody>
-        <tr>
-          <td>郵便番号(ハイフンなし)</td>
-          <td><%= f.text_field :postcode, autofocus: true %></td>
-        </tr>
-        <tr>
-          <td>住所</td>
-          <td><%= f.text_field :address, :size => "50" %></td>
-        </tr>
-        <tr>
-          <td>宛名</td>
-          <td><%= f.text_field :name %></td>
-          <td><%= f.submit "新規登録", class: "btn btn-secondary px-5" %></td>
-        </tr>
-        </tbody>
-      </table>
-    <% end %>
+      <div class="row">
+        <div class="col-md-10">
+          <%= form_with url: addresses_path, model: @shopping_address_new, local: true do |f| %>
+            <table class="table table-borderless">
+              <tbody>
+                <tr>
+                  <td>郵便番号(ハイフンなし)</td>
+                  <td><%= f.text_field :postcode, autofocus: true %></td>
+                </tr>
+                <tr>
+                  <td>住所</td>
+                  <td><%= f.text_field :address, size: "50" %></td>
+                </tr>
+                <tr>
+                  <td>宛名</td>
+                  <td><%= f.text_field :name %></td>
+                  <td><%= f.submit "新規登録", class: "btn btn-secondary px-5" %></td>
+                </tr>
+              </tbody>
+            </table>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-10">
+        <table class="table table-bordered table-secondary">
+          <thead style="thead-dark; font-weight: bold; background:#EAC7C7">
+            <tr>
+              <th class="text-center">郵便番号</th>
+              <th class="text-center">住所</th>
+              <th class="text-center">宛名</th>
+              <th></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @shopping_addresses.each do |address| %>
+              <tr>
+                <td class="align-middle"><%= address.postcode %></td>
+                <td class="align-middle"><%= address.address %></td>
+                <td class="align-middle"><%= address.name %></td>
+                <td class="custom-button-group justify-content-center">
+                  <%= link_to "編集する", edit_address_path(address.id), class: "btn btn-secondary px-4" %>
+                  <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-secondary px-4" %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
-
-  <div class="col-md-10">
-            <table class="table table-bordered table-secondary">
-              <thead style= "thead-dark; font-weight: bold; background:#EAC7C7">
-                <tr>
-                  <th class="text-center">郵便番号</th>
-                  <th class="text-center">住所</th>
-                  <th class="text-center">宛名</th>
-                  <th></th>
-                </tr>
-              </thead>
-
-            <tbody>
-                <% @shopping_addresses.each do |address| %>
-                  <tr>
-                    <td class="align-middle"><%= address.postcode %></td>
-                    <td class="align-middle"><%= address.address %></td>
-                    <td class="align-middle"><%= address.name %></td>
-                    <td class="custom-button-group justify-content-center"><%= link_to "編集する", edit_address_path(address.id), class: "btn btn-secondary px-4" %>
-                    <%= link_to "削除する", address_path(address.id), method: :delete, class: "btn btn-secondary px-4" %></td>
-                  </tr>
-                <% end %>
-            </tbody>
-          </table>
-    </div>
-</div>
 </div>
 

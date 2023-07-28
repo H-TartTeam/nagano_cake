@@ -28,6 +28,10 @@ class Item < ApplicationRecord
     (image.attached?) ? image : 'brownie.jpg'
   end
 
+  def self.ransackable_attributes(auth_object = nil)
+    ["name"]
+  end
+
   with_options presence: true do
     validates :name, presence: true
     validates :introduction, presence: true

@@ -14,8 +14,6 @@
  *= require_self
  */
 
-
- 
  * {
    margin: 0;
    padding: 0;
@@ -23,7 +21,7 @@
    color:#967E76;
    font-family: "ヒラギノ丸ゴ Pro W4","Nunito","Yu Gothic", "游ゴシック", YuGothic, "游ゴシック体", sans-serif;
  }
- 
+
 header {
   background-color:#F8E8EE;
   padding: 10px;
@@ -31,19 +29,26 @@ header {
   margin-bottom: 1rem;
 }
 
-body{
+body {
+  　position: relative;
     background-image: image-url('flower.jpg');
     background-position: center center;
-    background-repeat: repeat;
+    background-repeat: repeat-y;
     background-size: auto;
-    padding: 10px;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.5);
 }
 
+main {
+  min-height: 500px;
+}
+
 footer {
+  width: 100%;
+  // position: absolute;
+  // bottom: 0;
   background-color:#F8E8EE;
-  padding: 10px;
+  padding: 5px;
   margin: 0;
 }
 
@@ -53,7 +58,7 @@ footer {
   background-color: #F7DBF0!important;
 }
 
-a{
+a {
  color:#FFAAC9!important;
 }
 
@@ -61,10 +66,10 @@ a:hover {
   color:  #F675A8!important;
 }
 
- .mail-box {
+.mail-box {
     color: #967E76!important;
-  }
+}
 
-  .mail-magazine {
+.mail-magazine {
     color: #967E76!important;
-  }
+}

@@ -1,33 +1,33 @@
 ja: # 日本語の設定を行う
-    activerecord:
-      attributes:
-        item:
-        image: "画像"
-        name: "商品名"
-        introduction: "商品説明"
-        price: "税抜価格"
-    enums: # enumの設定を行う
-      order: # モデル名（Orderモデルに対して）
-        payment_method: # カラム名（payment_methodカラムに対して）
-          credit_card: "クレジットカード"
-          transfer: "銀行振込"
-        #注文ステータス日本語設定
-        status:
-          waiting_for_payment: "入金待ち"
-          confirmation_of_payment: "入金確認"
-          in_production: "製作中"
-          preparing_to_ship: "発送準備中"
-          shipped: "発送済み"
-      #製作ステータス日本語設定
-      order_item:
-        make_status:
-          production_status:
-          unable_to_start: "着手不可"
-          waiting_for_production: "製作待ち"
-          in_production: "製作中"
-          completion_of_production: "制作完了"
-          #deviseの翻訳
-ja:
+  activerecord:
+    attributes:
+      item:
+      image: "画像"
+      name: "商品名"
+      introduction: "商品説明"
+      price: "税抜価格"
+  enums: # enumの設定を行う
+    order: # モデル名（Orderモデルに対して）
+      payment_method: # カラム名（payment_methodカラムに対して）
+        credit_card: "クレジットカード"
+        transfer: "銀行振込"
+      #注文ステータス日本語設定
+      status:
+        waiting_for_payment: "入金待ち"
+        confirmation_of_payment: "入金確認"
+        in_production: "製作中"
+        preparing_to_ship: "発送準備中"
+        shipped: "発送済み"
+    #製作ステータス日本語設定
+    order_item:
+      make_status:
+        production_status:
+        unable_to_start: "着手不可"
+        waiting_for_production: "製作待ち"
+        in_production: "製作中"
+        completion_of_production: "制作完了"
+        #deviseの翻訳
+ #jaの記述はファイルに一つ・インデントがずれていると翻訳が効かない
   activerecord:
     errors:
       messages:

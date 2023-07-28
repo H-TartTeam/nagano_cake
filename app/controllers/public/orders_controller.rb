@@ -1,4 +1,5 @@
 class Public::OrdersController < ApplicationController
+  
   before_action :authenticate_customer!
 
   # 注文情報入力画面を表示するアクション
@@ -132,4 +133,5 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:customer_id, :postage, :total_amount, :status, :payment_method, :name, :postcode, :address)
   end
+  
 end
