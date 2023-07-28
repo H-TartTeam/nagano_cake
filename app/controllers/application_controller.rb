@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   before_action :search_box_setup
 
   def search_box_setup
