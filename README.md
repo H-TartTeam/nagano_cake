@@ -12,6 +12,7 @@ InstagramのDMやメールで通販の注文を受けていましたが、<br>
 情報管理が煩雑になってきたため、管理機能を含んだ通販サイトを開設しようと思い至りました。
 
 ## ECサイト　一部サンプル動画
+<img width="2388" alt="スクリーンショット 2023-05-29 12 42 01" src=　https://user-images.githubusercontent.com/135488694/256714087-7f09755c-e7d5-4c29-baf6-eda4c8d24dd6.png>
 1.ホーム
 https://github.com/H-TartTeam/nagano_cake/assets/135565720/c11a4c63-b472-4349-8e65-9a9a53707a9b
 
