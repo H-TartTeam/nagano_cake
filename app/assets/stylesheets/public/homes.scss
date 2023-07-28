@@ -1,6 +1,7 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
 .content-container {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -13,11 +14,11 @@
 }
 
 .genre-list li {
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .slide {
-    margin-left: 5px; 
+    margin-left: 5px;
     position: relative; /* 親要素に対して相対位置を指定 */
     width: 100%;
     height: 700px; /* 必要な高さを指定 */
