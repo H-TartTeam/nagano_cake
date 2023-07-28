@@ -13,8 +13,10 @@ InstagramのDMやメールで通販の注文を受けていましたが、<br>
 
 ## ECサイト　一部サンプル動画
 1.ホーム
+https://github.com/H-TartTeam/nagano_cake/assets/135565720/c11a4c63-b472-4349-8e65-9a9a53707a9b
 
 2.キーワード検索
+https://github.com/H-TartTeam/nagano_cake/assets/135565720/123adaee-9705-4142-bd69-c0365cbb7667
 
 **顧客側**
 - 会員登録、ログイン・ログアウト、退会
