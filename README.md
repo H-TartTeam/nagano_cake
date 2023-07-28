@@ -15,7 +15,7 @@ InstagramのDMやメールで通販の注文を受けていましたが、<br>
 
 
 1.トップページ
-![image](https://user-images.githubusercontent.com/135488694/256717508-3ffb609c-d71c-4ab4-920f-e17892ad1145.png)
+![image](https://user-images.githubusercontent.com/135565720/256726401-4959851c-ea20-4aa0-9ab1-c9c4579890d3.jpg)
 https://github.com/H-TartTeam/nagano_cake/assets/135565720/c11a4c63-b472-4349-8e65-9a9a53707a9b
 
 2.キーワード検索
