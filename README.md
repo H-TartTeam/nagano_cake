@@ -51,13 +51,13 @@ https://github.com/H-TartTeam/nagano_cake/assets/135565720/123adaee-9705-4142-bd
 - フレームワーク: Rails 6.1.7.4
 
 ## 使用方法
--$ git clone git@github.com:H-TartTeam/nagano_cake.git
--$ cd nagano-cake
--$ rails db:migrate
--$ rails db:seed
--$ yarn install
--$ bundle install
--$ rails s
+$ git clone git@github.com:H-TartTeam/nagano_cake.git<br>
+$ cd nagano-cake<br>
+$ rails db:migrate<br>
+$ rails db:seed<br>
+$ yarn install<br>
+$ bundle install<br>
+$ rails s
 
 管理者ページのログイン（/admin/sign_in)<br>
 初期段階での管理者ページのログインに必要なメールアドレス及びパスワードは下記の通りです。<br>
