@@ -1,4 +1,5 @@
 class Admin::OrderItemsController < ApplicationController
+
   # 注文商品の制作ステータスを更新するアクション
   def update
     @order_item = OrderItem.find(params[:id]) # パラメーターで指定された注文商品の詳細情報を取得
