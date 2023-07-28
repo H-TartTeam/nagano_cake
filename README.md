@@ -14,9 +14,9 @@ InstagramのDMやメールで通販の注文を受けていましたが、<br>
 ## ECサイト　一部サンプル画像・動画
 
 
-1.トップページ
+1.トップページhttps://github.com/H-TartTeam/nagano_cake/assets/135565720/c11a4c63-b472-4349-8e65-9a9a53707a9b
+
 ![image](https://user-images.githubusercontent.com/135565720/256726401-4959851c-ea20-4aa0-9ab1-c9c4579890d3.jpg)
-https://github.com/H-TartTeam/nagano_cake/assets/135565720/c11a4c63-b472-4349-8e65-9a9a53707a9b
 
 2.キーワード検索
 https://github.com/H-TartTeam/nagano_cake/assets/135565720/123adaee-9705-4142-bd69-c0365cbb7667
