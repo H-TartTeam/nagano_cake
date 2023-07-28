@@ -1,55 +1,55 @@
 <div class="plate mx-auto" id="cork">
-<div class="home-box mx-auto my-3 text-center">
-  <p class="home-text">
-    <%= image_tag "welcome.jpg", size: "900x300" %><br>
-    ようこそ、ながのCAKEへ！<br>
-    このサイトは、ケーキ販売のECサイトになります。<br>
-    会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
-  </p>
-  
-  <div class="content-container container">
-    <div class="genre_search">
-      <%= render 'public/items/genre_search', genres: @genres %>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function () {
-        $('.slide-item').hide();
-        $('.slide-item:first').show();
+  <div class="home-box mx-auto my-3 text-center">
+    <p class="home-text">
+      <%= image_tag "welcome.jpg", size: "900x300" %><br>
+      ようこそ、ながのCAKEへ！<br>
+      このサイトは、ケーキ販売のECサイトになります。<br>
+      会員でない方も商品の閲覧はできますが、購入には会員登録が必要になります。
+    </p>
 
-        setInterval(function () {
-          var currentSlide = $('.slide-item:visible');
-          var nextSlide = currentSlide.next('.slide-item');
+    <div class="content-container container">
+      <div class="genre_search">
+        <%= render 'public/items/genre_search', genres: @genres %>
+      </div>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+        $(document).ready(function () {
+          $('.slide-item').hide();
+          $('.slide-item:first').show();
 
-          if (nextSlide.length === 0) {
-            nextSlide = $('.slide-item:first');
-          }
+          setInterval(function () {
+            var currentSlide = $('.slide-item:visible');
+            var nextSlide = currentSlide.next('.slide-item');
 
-          currentSlide.fadeOut(500);
-          nextSlide.fadeIn(500);
-        }, 3000); // 3秒ごとにスライドを切り替え
-      });
-    </script>
+            if (nextSlide.length === 0) {
+              nextSlide = $('.slide-item:first');
+            }
 
-    <div class="slide">
-      <div class="slide-item">
-        <%= image_tag "shortcake.jpg", class: "slide-img", width: "1000", height: "600" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "cakeshop.jpg", class: "slide-img", width: "1000", height: "600" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "crepescake.jpg", class: "slide-img", width: "1000", height: "600" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "cupcakes.jpg", class: "slide-img", width: "1000", height: "600" %>
-      </div>
-      <div class="slide-item">
-        <%= image_tag "brownie.jpg", class: "slide-img", width: "1000", height: "600" %>
+            currentSlide.fadeOut(500);
+            nextSlide.fadeIn(500);
+          }, 3000); // 3秒ごとにスライドを切り替え
+        });
+      </script>
+
+      <div class="slide">
+        <div class="slide-item">
+          <%= image_tag "shortcake.jpg", class: "slide-img", width: "1000", height: "600" %>
+        </div>
+        <div class="slide-item">
+          <%= image_tag "cakeshop.jpg", class: "slide-img", width: "1000", height: "600" %>
+        </div>
+        <div class="slide-item">
+          <%= image_tag "crepescake.jpg", class: "slide-img", width: "1000", height: "600" %>
+        </div>
+        <div class="slide-item">
+          <%= image_tag "cupcakes.jpg", class: "slide-img", width: "1000", height: "600" %>
+        </div>
+        <div class="slide-item">
+          <%= image_tag "brownie.jpg", class: "slide-img", width: "1000", height: "600" %>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>
 
 <div class="container text-center">

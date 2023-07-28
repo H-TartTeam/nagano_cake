@@ -14,8 +14,6 @@
  *= require_self
  */
 
-
-
  * {
    margin: 0;
    padding: 0;
@@ -31,7 +29,7 @@ header {
   margin-bottom: 1rem;
 }
 
-body{
+body {
   　position: relative;
     background-image: image-url('flower.jpg');
     background-position: center center;
@@ -41,7 +39,7 @@ body{
     background-color: rgba(255, 255, 255, 0.5);
 }
 
-main{
+main {
   min-height: 500px;
 }
 
@@ -60,7 +58,7 @@ footer {
   background-color: #F7DBF0!important;
 }
 
-a{
+a {
  color:#FFAAC9!important;
 }
 
@@ -68,10 +66,10 @@ a:hover {
   color:  #F675A8!important;
 }
 
- .mail-box {
+.mail-box {
     color: #967E76!important;
-  }
+}
 
-  .mail-magazine {
+.mail-magazine {
     color: #967E76!important;
-  }
+}

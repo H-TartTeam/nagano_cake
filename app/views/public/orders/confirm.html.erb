@@ -1,8 +1,8 @@
 <div class="container">
-
   <h2 class="col-3 text-center">注文情報確認</h2>
   <div class="row">
     <div class="col-10">
+
       <table class="table table-bordered table-secondary">
         <thead style="color: #FFF; font-weight: bold; background:#EAC7C7;">
           <tr>
@@ -13,18 +13,18 @@
           </tr>
         </thead>
         <% @cart_items.each do |cart_item| %>
-        <tbody>
-          <tr>
-            <td>
-              <%= image_tag cart_item.item.get_item_image, size: "248x200" %>
-              <%= cart_item.item.name %>
-            </td>
-            <td class="text-center"><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
-            <td><%= cart_item.quantity %>個</td>
-            <td><%= (cart_item.item.taxin_price * cart_item.quantity).to_s(:delimited) %>円</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <%= image_tag cart_item.item.get_item_image, size: "248x200" %>
+                <%= cart_item.item.name %>
+              </td>
+              <td class="text-center"><%= cart_item.item.taxin_price.to_s(:delimited) %>円</td>
+              <td><%= cart_item.quantity %>個</td>
+              <td><%= (cart_item.item.taxin_price * cart_item.quantity).to_s(:delimited) %>円</td>
+            </tr>
           <% end %>
-        </tbody>
+          </tbody>
       </table>
     </div>
   </div>
@@ -77,5 +77,4 @@
       <% end %>
     </div>
   </div>
-
 </div>
